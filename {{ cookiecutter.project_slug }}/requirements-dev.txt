@@ -1,0 +1,7 @@
+pre-commit
+covdefaults
+coverage
+{%- if cookiecutter.use_pytest == 'y' %}
+pytest
+pytest-env
+{% endif %}
