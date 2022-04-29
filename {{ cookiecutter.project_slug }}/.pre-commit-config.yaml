@@ -99,12 +99,6 @@ repos:
       - id: reorder-python-imports
         args: [--py37-plus, --add-import, "from __future__ import annotations"]
 
-  # a tool designed to find common security issues in Python code.
-  - repo: https://github.com/PyCQA/bandit
-    rev: "1.7.4"
-    hooks:
-      - id: bandit
-
   # flake8 is a python tool that glues together…
   #   pycodestyle (befriended with `black` through config changes),
   #   pyflakes (detects various error by parsing [not importing] source file's),
