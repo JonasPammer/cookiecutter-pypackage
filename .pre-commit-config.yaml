@@ -19,11 +19,14 @@ repos:
         exclude: ".devcontainer/devcontainer.json"
       - id: check-toml
       - id: check-xml
-      # TODO compare to 'thoughtworks/talisman', 'yelp/detect-secrets', 'githuardian/ggshield'
-      - id: detect-private-key
-      # - id: detect-aws-credentials
       - id: mixed-line-ending
       - id: trailing-whitespace
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.2.0
+    hooks:
+      - id: detect-secrets
+        exclude: package.lock.json
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.6
