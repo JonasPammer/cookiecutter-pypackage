@@ -1,6 +1,6 @@
-pre-commit
 covdefaults
 coverage
+pre-commit
 {%- if cookiecutter.use_pytest == 'y' %}
 pytest
 pytest-env

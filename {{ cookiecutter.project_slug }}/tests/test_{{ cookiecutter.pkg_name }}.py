@@ -1,8 +1,9 @@
 """Tests for `{{ cookiecutter.project_slug }}` package."""
+from __future__ import annotations
 
 {% if cookiecutter.use_pytest == 'y' -%}
 import pytest
-{% else %}
+{%- else %}
 import unittest
 {%- endif %}
 {%- if cookiecutter.command_line_interface|lower == 'click' %}
@@ -13,6 +14,8 @@ from {{ cookiecutter.pkg_name }} import {{ cookiecutter.pkg_name }}
 
 
 {%- if cookiecutter.use_pytest == 'y' %}
+
+
 @pytest.fixture
 def response():
     """Sample pytest fixture.
@@ -35,6 +38,7 @@ def test_command_line_interface():
     result = runner.invoke({{ cookiecutter.pkg_name }}.main)
     assert result.exit_code == 0
     # assert 'some string' in result.output
+
 {%-   endif %}
 {%- else %}
 
