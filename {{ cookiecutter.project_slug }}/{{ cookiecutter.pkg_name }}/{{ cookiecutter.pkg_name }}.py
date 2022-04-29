@@ -3,10 +3,7 @@ from __future__ import annotations
 {%- if cookiecutter.command_line_interface|lower == 'argparse' %}
 import argparse
 {%- endif %}
-
-import sys
-
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
+{% if cookiecutter.command_line_interface|lower == 'click' %}
 import click
 {%- endif %}
 
