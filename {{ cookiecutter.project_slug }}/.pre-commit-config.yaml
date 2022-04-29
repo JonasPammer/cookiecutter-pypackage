@@ -26,7 +26,10 @@ repos:
     rev: v1.2.0
     hooks:
       - id: detect-secrets
-        excludes: [package.lock.json, .cruft.json]
+        exclude: |
+            (?x)^(
+                .cruft.json|
+            )$
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.6
