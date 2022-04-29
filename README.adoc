@@ -16,7 +16,7 @@ endif::[]
 
 [subs="+quotes,attributes"]
 ----
-user@machine:~/dev$ *cruft create https://github.com/JonasPammer/cookiecutter-ansible-role.git*
+user@machine:~/dev$ *cruft create https://github.com/JonasPammer/cookiecutter-pypackage.git*
 ----
 
 == Features
