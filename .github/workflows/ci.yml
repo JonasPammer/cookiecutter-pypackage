@@ -1,0 +1,59 @@
+name: Test Jinja2
+permissions: read-all
+"on":
+  pull_request:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/ci.yml"
+      - ".github/cookiecutter-example.yml"
+      - "{{ cookiecutter.project_slug }}/**"
+      - "cookiecutter.json"
+      - "requirements-dev.txt"
+
+jobs:
+  test-latest:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check out the codebase
+        uses: actions/checkout@v3
+
+      - name: set up python 3
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
+      - name: install cookiecutter development dependencies
+        run: |
+          python3 -m venv cookiecutter-venv
+          source cookiecutter-venv/bin/activate
+          pip3 install -r requirements-dev.txt
+
+      - name: Generate example project from cookiecutter.
+        run: |
+          source cookiecutter-venv/bin/activate
+          cookiecutter . --config-file .github/cookiecutter-example.yml --no-input
+
+      - name: install development dependencies of generated project
+        run: |
+          python3 -m venv project-venv
+          source project-venv/bin/activate
+          pip3 install -r requirements-dev.txt
+        working-directory: ./ansible-role-myrole
+
+      - name: Run pre-commit on all files in generated project
+        run: |
+          git init
+          git add .
+          source project-venv/bin/activate
+          pre-commit run --all-files --show-diff-on-failure
+        working-directory: ./ansible-role-myrole
+
+      - name: Run tox in generated project
+        run: |
+          source project-venv/bin/activate
+          tox
+        working-directory: ./ansible-role-myrole

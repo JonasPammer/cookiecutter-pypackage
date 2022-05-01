@@ -1,0 +1,11 @@
+default_context:
+  full_name: "Jonas Pammer"
+  github_username: "JonasPammer"
+  email: "opensource@jonaspammer.at"
+  code_of_conduct_enforcement_contact_email: "opensource@jonaspammer.at"
+
+  pypi_username: "jonaspammer"
+  project_name: "some-package"
+  project_short_description: "An Python Package for..."
+  command_line_interface: "Click"
+  use_pytest: "y"
