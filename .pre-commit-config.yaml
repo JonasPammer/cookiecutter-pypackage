@@ -28,13 +28,6 @@ repos:
       - id: detect-secrets
         exclude: package.lock.json
 
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.6
-    hooks:
-      - id: git-check # Configure in .gitattributes
-      - id: script-must-have-extension
-      - id: script-must-not-have-extension
-
 
 default_language_version:
   python: python3
