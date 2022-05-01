@@ -23,9 +23,9 @@ user@machine:~/dev$ *cruft create https://github.com/JonasPammer/cookiecutter-py
 
 === At-a-Glance
 
-* Formatting with https://github.com/psf/black[black] 
+* Formatting with https://github.com/psf/black[black]
 and https://prettier.io/[prettier]
-* Import sorting with https://github.com/asottile/reorder_python_imports[reorder-python-imports] 
+* Import sorting with https://github.com/asottile/reorder_python_imports[reorder-python-imports]
 (https://github.com/timothycrosley/isort[isort] alternative)
 * Static typing with http://mypy-lang.org/[mypy]
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
