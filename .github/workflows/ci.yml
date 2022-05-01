@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.7"
-      
+
       - name: set up python 3 (pypy)
         uses: actions/setup-python@v3
         with:
