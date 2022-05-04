@@ -31,7 +31,7 @@ and https://prettier.io/[prettier]
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
 * Git hooks that run all the above with pre-commit
 * Testing with https://docs.pytest.org/en/latest/[pytest] and tox
-* Deployment ready with Docker [TODO]
+* Deployment ready with Docker
 * Continuous Integration with https://github.com/features/actions[GitHub Actions]
 
 === General
