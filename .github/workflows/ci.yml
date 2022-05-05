@@ -34,9 +34,20 @@ jobs:
       - name: setup/activate pre-commit cache
         uses: actions/cache@v3
         with:
-          path: |
-            ~/.cache/pre-commit
+          path: ~/.cache/pre-commit
           key: ${{ hashFiles('**/.pre-commit-config.yaml') }}
+
+      - name: setup/activate cookiecutter-venv cache
+        uses: actions/cache@v3
+        with:
+          path: cookiecutter-venv
+          key: ${{ hashFiles('requirements-dev.txt') }}
+
+      - name: setup/activate project-venv cache
+        uses: actions/cache@v3
+        with:
+          path: project-venv
+          key: ${{ hashFiles('*/requirements-dev.txt') }}
 
       - name: install cookiecutter development dependencies
         run: |
