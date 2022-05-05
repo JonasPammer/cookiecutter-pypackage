@@ -31,6 +31,13 @@ jobs:
         with:
           python-version: "3.7"
 
+      - name: setup pre-commit cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pre-commit
+          key: ${{ hashFiles('**/.pre-commit-config.yaml') }}
+
       - name: install cookiecutter development dependencies
         run: |
           python3 -m venv cookiecutter-venv
