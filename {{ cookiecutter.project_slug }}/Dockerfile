@@ -27,6 +27,11 @@ RUN apt-get -qy update \
 
 ### Install Project ###
 
+# Create and use non-root user for security purposes (https://github.com/hexops/dockerfile#run-as-a-non-root-user)
+RUN addgroup --gid 10001 --system secureappuser \
+ && adduser  --uid 10000 --system --ingroup secureappuser --home /home/secureappuser secureappuser
+USER secureappuser
+
 WORKDIR /app
 COPY . .
 RUN pip3 install .
