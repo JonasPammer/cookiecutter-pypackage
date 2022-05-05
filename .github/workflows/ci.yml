@@ -92,6 +92,7 @@ jobs:
         with:
           context: ./some-package
           tags: jonaspammer/some-package:latest
+          load: true
           push: false
 
       - name: Run Trivy vulnerability scanner on generated docker image
