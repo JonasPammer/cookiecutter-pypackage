@@ -35,3 +35,6 @@ RUN pip3 install .
 
 #ENTRYPOINT [ "/bin/bash" ]
 ENTRYPOINT [ "{{ cookiecutter.pkg_name }}" ]
+
+# Default arguments for the ENTRYPOINT (https://github.com/hexops/dockerfile#only-store-arguments-in-cmd)
+#CMD ["--foo", "1"]

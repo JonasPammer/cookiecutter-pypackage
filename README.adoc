@@ -32,7 +32,7 @@ and https://prettier.io/[prettier]
 * Git hooks that run all the above with pre-commit
 * Testing with https://docs.pytest.org/en/latest/[pytest] and tox
 * Deployment and Execution ready with best-practice (
-  https://github.com/hexops/dockerfile[1],
+  https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
   https://pythonspeed.com/docker/[2]
   ) Docker
 * Continuous Integration with https://github.com/features/actions[GitHub Actions]
