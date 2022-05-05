@@ -31,4 +31,4 @@ RUN pip3 install .
 
 ### Configure Container Startup Configuration ###
 #ENTRYPOINT [ "/bin/bash" ]
-ENTRYPOINT [ "python" "-m" "{{ cookiecutter.pkg_name }}" ]
+ENTRYPOINT [ "{{ cookiecutter.pkg_name }}" ]
