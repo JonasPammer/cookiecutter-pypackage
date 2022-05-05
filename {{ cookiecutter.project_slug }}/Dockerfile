@@ -33,7 +33,6 @@ RUN apt-get -qy update \
 ### Install Project ###
 
 USER secureappuser
-
 WORKDIR /app
 COPY . .
 RUN pip3 install .
