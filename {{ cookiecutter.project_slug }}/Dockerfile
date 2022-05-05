@@ -21,8 +21,8 @@ ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
 RUN apt-get -qy update \
     && apt-get -qqy install --no-install-recommends python3-wheel \
-    && pip3 install --no-cache-dir --upgrade pip \
-    && pip3 install --no-cache-dir wheel \
+    && python3 -m pip install --no-cache-dir --upgrade pip \
+    && python3 -m pip install --no-cache-dir wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ### Install Project ###
