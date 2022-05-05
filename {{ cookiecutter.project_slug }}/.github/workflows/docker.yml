@@ -11,6 +11,7 @@ name: build-push
   pull_request:
     branches:
       - "main"
+      - "master"
 
 jobs:
   docker:
@@ -35,13 +36,13 @@ jobs:
             type=semver,pattern={% raw %}{{major}}.{{minor}}{% endraw %}
             type=sha
 
-      - name: set up QEMU
+      - name: set up qemu
         uses: docker/setup-qemu-action@v1
 
-      - name: set up Docker Buildx
+      - name: set up docker buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: login to DockerHub
+      - name: login to dockerhub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v1
         with:
@@ -55,3 +56,34 @@ jobs:
           push: {% raw %}${{ github.event_name != 'pull_request' }}{% endraw %}
           tags: {% raw %}${{ steps.meta.outputs.tags }}{% endraw %}
           labels: {% raw %}${{ steps.meta.outputs.labels }}{% endraw %}
+
+  docker-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v3
+
+      - name: setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "2.7.0"
+
+      - name: install asciidoctor
+        run: gem install --no-document asciidoctor rouge coderay
+
+      - name: Convert README.adoc to README.xml using Asciidoctor.
+        run: asciidoctor -b docbook README.adoc
+
+      # https://github.com/pandoc/pandoc-action-example
+      - name: Convert README.xml to README.md using Pandoc.
+        uses: docker://pandoc/core:2.18
+        with:
+          args: "-f docbook -t markdown_strict README.xml -o README.md"
+
+      # https://github.com/docker/build-push-action/issues/21
+      - name: Sync README.md to DockerHub.
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: JonasPammer/docker-test
