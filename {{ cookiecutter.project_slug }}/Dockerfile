@@ -30,7 +30,7 @@ RUN apt-get -qy update \
     && python3 -m pip install --no-cache-dir wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-### Install Project ###
+### Project-Specific Dockerfile Steps ###
 
 USER secureappuser
 WORKDIR /app
