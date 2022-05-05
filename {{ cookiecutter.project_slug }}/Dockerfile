@@ -20,7 +20,7 @@ RUN addgroup --gid 10001 --system secureappuser \
     && adduser  --uid 10000 --system --ingroup secureappuser --home /home/secureappuser secureappuser \
     && chown secureappuser:secureappuser /app
 
-ENV VIRTUAL_ENV=/app
+ENV VIRTUAL_ENV=/app/venv
 RUN python3 -m venv "${VIRTUAL_ENV}"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
