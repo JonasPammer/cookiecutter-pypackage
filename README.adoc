@@ -87,6 +87,51 @@ The resulting projects mentions that `pre-commit` installation is optional,
 as it is assumed that the project is included in your `pre-commit.ci` account projects.
 ====
 
+* Includes a GitHub Workflow to automatically build, tag and push the Project's Dockerfile to DockerHub
++
+[NOTE]
+====
+*Requires* the secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` to be present in the GitHub repository or organization!
+====
++
+[NOTE]
+====
+The docker image is automatically tagged using
+https://github.com/docker/metadata-action[docker/metadata-action]
+in below format (based on the SemVer example):
+
+|===
+| Event | Ref (Action Input) | Docker Tags
+
+| `pull_request`
+| `refs/pull/2/merge`
+| `pr-2`
+
+| `push`
+| `refs/heads/master`
+| `master`
+
+// TODO add example for sha
+
+| `push`
+| `refs/heads/releases/v1`
+| `releases-v1`
+
+| `push tag`
+| `refs/tags/v1.2.3`
+| `1.2.3`,
+  `1.2`,
+  `latest`
+
+| `push tag`
+| `refs/tags/v2.0.8-beta.67`
+| `2.0.8-beta.67`
+|===
+
+[NOTE]
+Tags not starting with `v` are not processed by this GitHub Workflow.
+====
+
 * Includes a `.gitattributes` file, ensuring LF line endings
 * Includes GitHub *Issue Form Templates* for filing bug reports and feature requests using HTML forms
 * Includes a GitHub *Pull Request Template*
