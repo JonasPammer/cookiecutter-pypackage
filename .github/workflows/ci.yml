@@ -84,7 +84,7 @@ jobs:
           push: false
 
       - name: Run Trivy vulnerability scanner on generated docker image
-        uses: aquasecurity/trivy-action@v0.2.5
+        uses: aquasecurity/trivy-action@0.2.5
         with:
           image-ref: jonaspammer/some-package:latest
           format: table
