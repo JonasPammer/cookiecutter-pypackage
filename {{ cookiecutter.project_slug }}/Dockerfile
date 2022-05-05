@@ -20,7 +20,7 @@ RUN python3 -m venv "${VIRTUAL_ENV}"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
 RUN apt-get -qy update \
-    && apt-get -qqy install python3-wheel \
+    && apt-get -qqy install --no-install-recommends python3-wheel \
     && pip3 install --no-cache-dir --upgrade pip \
     && pip3 install --no-cache-dir wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
