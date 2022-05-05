@@ -38,7 +38,7 @@ RUN pip3 install .
 
 ### Configure Container Startup Configuration ###
 
-# Tini allows us to avoid several Docker edge cases, see https://github.com/krallin/tini.
+# (Tini allows us to avoid several Docker edge cases, see https://github.com/krallin/tini)
 ENTRYPOINT [ "/usr/bin/tini", "--",  "{{ cookiecutter.pkg_name }}" ]
 
 # Default arguments for the ENTRYPOINT (https://github.com/hexops/dockerfile#only-store-arguments-in-cmd)
