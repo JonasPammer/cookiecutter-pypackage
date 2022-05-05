@@ -17,8 +17,7 @@ RUN apt-get -qy update \
 
 # Create non-root user for security purposes (https://github.com/hexops/dockerfile#run-as-a-non-root-user)
 RUN addgroup --gid 10001 --system secureappuser \
-    && adduser  --uid 10000 --system --ingroup secureappuser --home /home/secureappuser secureappuser \
-    && chown secureappuser:secureappuser /app
+    && adduser  --uid 10000 --system --ingroup secureappuser --home /home/secureappuser secureappuser
 
 ENV VIRTUAL_ENV=/app/venv
 RUN python3 -m venv "${VIRTUAL_ENV}"
@@ -30,8 +29,10 @@ RUN apt-get -qy update \
     && python3 -m pip install --no-cache-dir wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+
 ### Project-Specific Dockerfile Steps ###
 
+RUN chown -R secureappuser:secureappuser /app
 USER secureappuser
 WORKDIR /app
 COPY . .
