@@ -15,6 +15,11 @@ RUN apt-get -qy update \
     && apt-get -qy install --no-install-recommends apt-utils tini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Create non-root user for security purposes (https://github.com/hexops/dockerfile#run-as-a-non-root-user)
+RUN addgroup --gid 10001 --system secureappuser \
+    && adduser  --uid 10000 --system --ingroup secureappuser --home /home/secureappuser secureappuser \
+    && chown secureappuser:secureappuser /app
+
 ENV VIRTUAL_ENV=/app
 RUN python3 -m venv "${VIRTUAL_ENV}"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
@@ -27,9 +32,6 @@ RUN apt-get -qy update \
 
 ### Install Project ###
 
-# Create and use non-root user for security purposes (https://github.com/hexops/dockerfile#run-as-a-non-root-user)
-RUN addgroup --gid 10001 --system secureappuser \
- && adduser  --uid 10000 --system --ingroup secureappuser --home /home/secureappuser secureappuser
 USER secureappuser
 
 WORKDIR /app
