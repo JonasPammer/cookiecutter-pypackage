@@ -27,7 +27,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            {{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+            {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch
@@ -84,6 +84,6 @@ jobs:
       - name: Sync README.md to DockerHub.
         uses: peter-evans/dockerhub-description@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: JonasPammer/docker-test
+          username: {% raw %}${{ secrets.DOCKERHUB_USERNAME }}{% endraw %}
+          password: {% raw %}${{ secrets.DOCKERHUB_PASSWORD }}{% endraw %}
+          repository: {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}

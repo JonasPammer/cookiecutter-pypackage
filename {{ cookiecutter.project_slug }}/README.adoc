@@ -16,6 +16,7 @@ endif::[]
 
 // Very Relevant Status Badges
 https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml/badge.svg[CI Status]]
+https://hub.docker.com/r/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml/badge.svg[Docker Build Status]]
 {%- if cookiecutter.will_be_uploaded_to_pypi == 'y' %}
 image:https://img.shields.io/pypi/pyversions/{{ cookiecutter.pkg_name }}.svg[Python Versions]
 {% endif %}
