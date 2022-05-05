@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.7"
 
-      - name: setup pre-commit cache
+      - name: setup/activate pre-commit cache
         uses: actions/cache@v3
         with:
           path: |
