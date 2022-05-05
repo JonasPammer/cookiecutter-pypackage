@@ -3,12 +3,12 @@ name: build-push
 "on":
   push:
     branches:
-      - '**'
+      - "*"
     tags:
-      - 'v*'
+      - "v*"
   pull_request:
     branches:
-      - 'main'
+      - "main"
 
 jobs:
   docker:
