@@ -5,6 +5,7 @@ LABEL org.label-schema.schema-version="1.0"
 LABEL org.label-schema.vcs-url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
 ### General Python Debian Docker Best-Practice Preperation Steps ###
+
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 ENV PYTHONUNBUFFERED=1
@@ -25,10 +26,12 @@ RUN apt-get -qy update \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ### Install Project ###
+
 WORKDIR /app
 COPY . .
 RUN pip3 install .
 
 ### Configure Container Startup Configuration ###
+
 #ENTRYPOINT [ "/bin/bash" ]
 ENTRYPOINT [ "{{ cookiecutter.pkg_name }}" ]
