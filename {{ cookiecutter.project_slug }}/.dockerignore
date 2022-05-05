@@ -4,4 +4,5 @@
 # ... except for dependencies and source
 !setup.cfg
 !setup.py
+!LICENSE
 !{{ cookiecutter.pkg_name }}
