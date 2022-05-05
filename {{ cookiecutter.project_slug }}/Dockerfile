@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qy update \
-    && apt-get -qy install --no-install-recommends apt-utils \
+    && apt-get -qy install --no-install-recommends apt-utils tini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV VIRTUAL_ENV=/app
@@ -33,8 +33,8 @@ RUN pip3 install .
 
 ### Configure Container Startup Configuration ###
 
-#ENTRYPOINT [ "/bin/bash" ]
-ENTRYPOINT [ "{{ cookiecutter.pkg_name }}" ]
+# Tini allows us to avoid several Docker edge cases, see https://github.com/krallin/tini.
+ENTRYPOINT [ "/usr/bin/tini", "--",  "{{ cookiecutter.pkg_name }}" ]
 
 # Default arguments for the ENTRYPOINT (https://github.com/hexops/dockerfile#only-store-arguments-in-cmd)
 #CMD ["--foo", "1"]
