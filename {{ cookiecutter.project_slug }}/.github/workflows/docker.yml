@@ -65,7 +65,7 @@ jobs:
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@v0.2.5
+        uses: aquasecurity/trivy-action@0.2.5
         with:
           image-ref: "docker.io/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:sha-{% raw %}${{ steps.vars.outputs.sha_short }}{% endraw %}"
           format: "table"
