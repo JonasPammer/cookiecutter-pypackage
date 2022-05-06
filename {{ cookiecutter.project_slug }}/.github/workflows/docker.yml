@@ -14,7 +14,7 @@ name: build-push
       - "master"
 
 jobs:
-  docker:
+  dockerhub:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
@@ -57,7 +57,25 @@ jobs:
           tags: {% raw %}${{ steps.meta.outputs.tags }}{% endraw %}
           labels: {% raw %}${{ steps.meta.outputs.labels }}{% endraw %}
 
-  docker-readme:
+  trivy-security:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: compute sha_short
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@v0.2.5
+        with:
+          image-ref: 'docker.io/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:sha-${{ steps.vars.outputs.sha_short }}'
+          format: 'table'
+          exit-code: '1'
+          # relevant read: https://pythonspeed.com/articles/docker-security-scanner/
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+  dockerhub-readme:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
