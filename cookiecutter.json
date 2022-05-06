@@ -1,7 +1,7 @@
 {
   "full_name": "Jonas Pammer",
   "github_username": "JonasPammer",
-  "dockerhub_username": "{{ github_username.lower() }}",
+  "dockerhub_username": "{{ cookiecutter.github_username.lower() }}",
   "email": "opensource@jonaspammer.at",
   "code_of_conduct_enforcement_contact_email": "opensource@jonaspammer.at",
 
