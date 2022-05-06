@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qy update \
-    && apt get -qy upgrade \
+    && apt-get -qy upgrade \
     && apt-get -qy install --no-install-recommends apt-utils tini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
