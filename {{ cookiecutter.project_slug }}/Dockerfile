@@ -12,6 +12,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qy update \
+    && apt get -qy upgrade \
     && apt-get -qy install --no-install-recommends apt-utils tini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -40,7 +41,8 @@ RUN pip3 install .
 
 ### Configure Container Startup Configuration ###
 
-# (Tini allows us to avoid several Docker edge cases, see https://github.com/krallin/tini)
+# (Tini allows us to avoid several Docker edge cases,
+#  see https://github.com/krallin/tini / https://hynek.me/articles/docker-signals/)
 ENTRYPOINT [ "/usr/bin/tini", "--",  "{{ cookiecutter.pkg_name }}" ]
 
 # Default arguments for the ENTRYPOINT go in CMD (https://github.com/hexops/dockerfile#only-store-arguments-in-cmd)
