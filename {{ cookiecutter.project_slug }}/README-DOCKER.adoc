@@ -22,7 +22,7 @@ https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_sl
 {base_command}:v1.0 *[--help | ...]*
 ----
 
-.Running the latest development version
+.Running the latest development version (https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml/badge.svg[CI Status]])
 [subs="quotes,attributes"]
 ----
 {base_command}:master *[--help | ...]*
