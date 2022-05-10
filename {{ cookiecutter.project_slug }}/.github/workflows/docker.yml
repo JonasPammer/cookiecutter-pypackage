@@ -1,4 +1,4 @@
-name: Docker Image (Build / Push / Scan / Sync)
+name: Docker Image Build / Scan / Sync
 
 "on":
   push:
