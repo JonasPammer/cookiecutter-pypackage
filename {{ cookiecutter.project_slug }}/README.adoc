@@ -51,10 +51,20 @@ toc::[]
 
 == Installing
 
-This package is available through PyPi:
+This package is available at https://pypi.org/project/{{ cookiecutter.pkg_name }}[PyPi].
+
+I recommend you to install it using https://github.com/pypa/pipx[pipx],
+a tool that help you installing and running end-user applications written in Python
+without worrying about any virtualenv magic:
 
 ----
-$ python3 -m pip install {{ cookiecutter.project_slug }}
+$ pipx install {{ cookiecutter.pkg_name }}
+----
+
+But you can of course also install it using normal pip or in your virtual environment:
+
+----
+$ python3 -m pip install {{ cookiecutter.pkg_name }}
 ----
 
 == Running
@@ -65,8 +75,8 @@ $ {{ cookiecutter.pkg_name }} *[--help]*
 ----
 
 
-=== Extra: Running without Installing
-See link:DOCKER-README.adoc[DOCKER] or use https://github.com/pypa/pipx[pipx].
+== Extra: Running without Installing
+See link:README-DOCKER.adoc[DOCKER].
 
 
 [[development]]
