@@ -35,11 +35,39 @@ __A single-page version of this README can be found at https://{{ cookiecutter.g
 {{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}].__
 endif::[]
 
-
-{{ cookiecutter.project_short_description }}
+A Python Package to {{ cookiecutter.project_short_description }}.
 
 
 toc::[]
+
+== Features
+
+...
+
+
+== System Requirements
+
+* Python 3.7 / PyPy 3.7 or above
+
+== Installing
+
+This package is available through PyPi:
+
+----
+$ python3 -m pip install {{ cookiecutter.project_slug }}
+----
+
+== Running
+
+[subs="quotes"]
+----
+$ {{ cookiecutter.pkg_name }} *[--help]*
+----
+
+
+=== Extra: Running without Installing
+See link:DOCKER-README.adoc[DOCKER] or use https://github.com/pypa/pipx[pipx].
+
 
 [[development]]
 == 📝 Development
