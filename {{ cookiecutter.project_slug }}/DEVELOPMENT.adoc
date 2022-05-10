@@ -68,6 +68,6 @@ Automatic Tests are run on each Contribution using GitHub Workflows.
 
 The System Requirements for local testing are as follows:
 
-* Python3 with <<development--dependencies>> installed
+* Python3 with <<development-dependencies>> installed
 
 To run the tests, simply run `tox` on the command line.
