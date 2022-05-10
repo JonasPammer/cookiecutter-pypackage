@@ -8,11 +8,29 @@ https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_sl
 
 
 == Run
+:base_command: docker run --rm -it {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}
 
-[subs="quotes"]
+.Running the latest release
+[subs="quotes,attributes"]
 ----
-docker run --rm -it {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }} *[--help | ...]*
+{base_command} *[--help | ...]*
 ----
+
+.Running a given release
+[subs="quotes,attributes"]
+----
+{base_command}:v1.0 *[--help | ...]*
+----
+
+.Running the latest development version
+[subs="quotes,attributes"]
+----
+{base_command}:master *[--help | ...]*
+----
+
+=== Tags
+
+
 
 == Source Repository
 
