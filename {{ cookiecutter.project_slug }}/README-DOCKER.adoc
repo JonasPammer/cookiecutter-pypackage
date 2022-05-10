@@ -1,0 +1,19 @@
+= {{ cookiecutter.project_name }}
+{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>;
+
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml/badge.svg[Docker Workflow Status]]
+
+This image can be used to run
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}[{{ cookiecutter.project_slug }}].
+
+
+== Run
+
+[subs="quotes"]
+----
+docker run --rm -it {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }} *[--help | ...]*
+----
+
+== Source Repository
+
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
