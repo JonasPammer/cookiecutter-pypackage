@@ -44,7 +44,7 @@ jobs:
             type=semver,pattern={% raw %}{{major}}.{{minor}}{% endraw %}
             type=sha
 
-      - name: set up qemu
+      - name: set up qemu for docker
         uses: docker/setup-qemu-action@v2
 
       - name: set up docker buildx
@@ -66,19 +66,28 @@ jobs:
           labels: {% raw %}${{ steps.meta.outputs.labels }}{% endraw %}
 
   trivy-security:
-    needs: dockerhub
     runs-on: ubuntu-latest
     steps:
       - name: check out the codebase
         uses: actions/checkout@v3
-      - name: compute sha_short
-        id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      
+      - name: set up qemu for docker
+        uses: docker/setup-qemu-action@v2
 
-      - name: Run Trivy vulnerability scanner.
+      - name: set up docker buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Dockerfile.
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: false
+          tags: {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:local
+
+      - name: Run Trivy vulnerability scanner on built Image.
         uses: aquasecurity/trivy-action@0.2.5
         with:
-          image-ref: "docker.io/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:sha-{% raw %}${{ steps.vars.outputs.sha_short }}{% endraw %}"
+          image-ref: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:local"
           format: "table"
           exit-code: "1"
           # relevant read: https://pythonspeed.com/articles/docker-security-scanner/
