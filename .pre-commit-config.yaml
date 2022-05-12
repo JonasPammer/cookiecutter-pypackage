@@ -32,6 +32,7 @@ repos:
 default_language_version:
   python: python3
 ci:
+  autoupdate_schedule: quarterly
   autofix_commit_msg: |
     chore(pre-commit): auto fixes from hooks :rotating_light:
 
