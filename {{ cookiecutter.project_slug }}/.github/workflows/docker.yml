@@ -110,14 +110,14 @@ jobs:
       - name: install asciidoctor
         run: gem install --no-document asciidoctor rouge coderay
 
-      - name: Convert README-DOCKER.adoc to README-DOCKER.xml using Asciidoctor.
-        run: asciidoctor -b docbook README-DOCKER.adoc
+      - name: Convert README_DOCKER.adoc to README-DOCKER.xml using Asciidoctor.
+        run: asciidoctor -b docbook README_DOCKER.adoc
 
       # https://github.com/pandoc/pandoc-action-example
-      - name: Convert README-DOCKER.xml to README.md using Pandoc.
+      - name: Convert README_DOCKER.xml to README.md using Pandoc.
         uses: docker://pandoc/core:2.18
         with:
-          args: "-f docbook -t markdown_strict README-DOCKER.xml -o README.md"
+          args: "-f docbook -t markdown_strict README_DOCKER.xml -o README.md"
 
       # https://github.com/docker/build-push-action/issues/21
       - name: Sync README.md to DockerHub.

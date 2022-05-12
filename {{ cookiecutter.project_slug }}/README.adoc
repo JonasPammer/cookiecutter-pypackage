@@ -78,7 +78,7 @@ $ {{ cookiecutter.pkg_name }} *[--help]*
 
 
 == Extra: Running without Installing
-See link:README-DOCKER.adoc[DOCKER].
+See link:README_DOCKER.adoc[DOCKER].
 
 
 [[development]]
