@@ -8,6 +8,14 @@ name: Docker Image Build / Scan / Sync
       - "!pre-commit*"
     tags:
       - "v*"
+    paths:
+      - ".github/workflows/docker.yml"
+      - ".dockerignore"
+      # as per .dockerignore:
+      - "setup.cfg"
+      - "setup.py"
+      - "LICENSE"
+      - "{{ cookiecutter.pkg_name }}/**"
   pull_request:
     branches:
       - "main"
