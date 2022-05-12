@@ -54,8 +54,8 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
-          username: {{ cookiecutter.dockerhub_username }}
-          password: {% raw %}${{ secrets.DOCKERHUB_TOKEN }}{% endraw %}
+          username: "{{ cookiecutter.dockerhub_username }}"
+          password: "{% raw %}${{ secrets.DOCKERHUB_TOKEN }}{% endraw %}"
 
       - name: Build Dockerfile and push.
         uses: docker/build-push-action@v3
@@ -82,13 +82,13 @@ jobs:
         with:
           context: .
           push: false
-          tags: {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:local
+          tags: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:local"
 
       - name: Run Trivy vulnerability scanner on built Image.
         uses: aquasecurity/trivy-action@0.2.5
         with:
           image-ref: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:local"
-          format: "table"
+          format: table
           exit-code: "1"
           # relevant read: https://pythonspeed.com/articles/docker-security-scanner/
           ignore-unfixed: true
@@ -122,6 +122,6 @@ jobs:
       - name: Sync README.md to DockerHub.
         uses: peter-evans/dockerhub-description@v3
         with:
-          username: {{ cookiecutter.dockerhub_username }}
-          password: {% raw %}${{ secrets.DOCKERHUB_PASSWORD }}{% endraw %}
-          repository: {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}
+          username: "{{ cookiecutter.dockerhub_username }}"
+          password: "{% raw %}${{ secrets.DOCKERHUB_PASSWORD }}{% endraw %}""
+          repository: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}"
