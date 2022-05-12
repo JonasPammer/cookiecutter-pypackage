@@ -68,9 +68,9 @@ jobs:
   trivy-security:
     runs-on: ubuntu-latest
     steps:
-      - name: check out the codebase
+      - name: Check out the codebase.
         uses: actions/checkout@v3
-      
+
       - name: set up qemu for docker
         uses: docker/setup-qemu-action@v2
 
@@ -123,5 +123,5 @@ jobs:
         uses: peter-evans/dockerhub-description@v3
         with:
           username: "{{ cookiecutter.dockerhub_username }}"
-          password: "{% raw %}${{ secrets.DOCKERHUB_PASSWORD }}{% endraw %}""
+          password: "{% raw %}${{ secrets.DOCKERHUB_PASSWORD }}{% endraw %}"
           repository: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}"
