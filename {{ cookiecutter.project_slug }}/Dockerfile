@@ -1,8 +1,7 @@
 FROM python:3.7-slim-bullseye
 
 LABEL maintainer="{{ cookiecutter.email }}"
-LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.vcs-url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+LABEL org.opencontainers.source="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
 ### General Python Debian Docker Best-Practice Preperation Steps ###
 
