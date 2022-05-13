@@ -31,11 +31,11 @@ and https://prettier.io/[prettier]
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
 * Git hooks that run all the above with pre-commit
 * Testing with https://docs.pytest.org/en/latest/[pytest] and tox
-* Deployment and Execution ready with best-practice (
-  https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
-  https://pythonspeed.com/docker/[2]
-  ) Docker
+* Deployment / Execution ready through Dockerfile that follows all best-practices
+  (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
+   https://pythonspeed.com/docker/[2])
 * Continuous Integration with https://github.com/features/actions[GitHub Actions]
+* Assumes Minimum Python Version of 3.7
 
 === General
 
