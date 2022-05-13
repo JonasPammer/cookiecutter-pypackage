@@ -57,7 +57,7 @@ jobs:
       - name: install development dependencies
         run: pip3 install -r requirements-dev.txt
         working-directory: ./some-package
-      
+
       # tox automatically installs local package
       - name: Run tox.
         run: tox
@@ -70,8 +70,8 @@ jobs:
         with:
           filename: coverage.xml
           fail_below_min: false
-          output: both 
-      
+          output: both
+
       - name: Add Coverage Report as Sticky PR Comment.
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'
