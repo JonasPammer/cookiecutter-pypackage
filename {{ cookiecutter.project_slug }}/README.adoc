@@ -21,11 +21,6 @@ https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_sl
 image:https://img.shields.io/pypi/pyversions/{{ cookiecutter.pkg_name }}.svg[Python Versions]
 {% endif %}
 
-ifdef::env-github[]
-[TIP]
-__A single-page version of this README can be found at https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}[
-{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}].__
-endif::[]
 
 A Python Package to {{ cookiecutter.project_short_description }}.
 
@@ -45,8 +40,8 @@ toc::[]
 
 This package is available at https://pypi.org/project/{{ cookiecutter.pkg_name }}[PyPi].
 
-I recommend you to install it using https://github.com/pypa/pipx[pipx],
-a tool that help you installing and running end-user applications written in Python
+I recommend you to install using https://github.com/pypa/pipx[pipx] -
+a tool that helps installing and running end-user applications written in Python
 without worrying about any virtualenv magic:
 
 ----
@@ -86,6 +81,7 @@ include::DEVELOPMENT.adoc[]
 [[contributing]]
 == 💪 Contributing image:https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square[PRs Welcome]
 https://open.vscode.dev/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}[image:https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc[Open in Visual Studio Code]]
+
 include::CONTRIBUTING.adoc[]
 
 
