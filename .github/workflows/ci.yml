@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the codebase.
+      - name: check out the codebase
         uses: actions/checkout@v3
 
       - name: set up python 3 (pypy)
