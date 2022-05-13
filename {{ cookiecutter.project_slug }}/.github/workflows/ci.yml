@@ -1,0 +1,81 @@
+---
+name: CI
+permissions: read-all
+"on":
+  workflow_dispatch:
+    inputs:
+      lint:
+        description: "Lint"
+        required: true
+        default: true
+        type: boolean
+  pull_request:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/ci.yml"
+      - "tests/**"
+      - ".gitattributes"
+      - ".yamllint"
+      - "pyproject.toml"
+      - "requirements-dev.txt"
+      - "tox.ini"
+      # as per .dockerignore:
+      - "setup.cfg"
+      - "setup.py"
+      - "LICENSE"
+      - "{{ cookiecutter.pkg_name }}/**"
+  schedule:
+    # At 05:00 on Sunday.
+    - cron: "0 5 * * 0"
+
+jobs:
+  ci:
+    name: Tox
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out the codebase
+        uses: actions/checkout@v3
+
+      - name: set up python 3 (pypy)
+        uses: actions/setup-python@v3
+        with:
+          python-version: "pypy-3.7"
+
+      - name: set up python 3
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.7"
+
+      - name: setup/activate pre-commit cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: install development dependencies
+        run: pip3 install -r requirements-dev.txt
+        working-directory: ./some-package
+      
+      # tox automatically installs local package
+      - name: Run tox.
+        run: tox
+
+      - name: generate coverage xml
+        run: .tox/py3/bin/coverage xml -o coverage.xml
+
+      - name: Generate Code Coverage Summary Report.
+        uses: irongut/CodeCoverageSummary@v1.2.0
+        with:
+          filename: coverage.xml
+          fail_below_min: false
+          output: both 
+      
+      - name: Add Coverage Report as Sticky PR Comment.
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
+
