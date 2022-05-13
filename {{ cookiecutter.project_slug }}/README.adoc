@@ -54,6 +54,7 @@ But you can of course also install it using normal pip or in your virtual enviro
 $ python3 -m pip install {{ cookiecutter.pkg_name }}
 ----
 
+
 == Usage
 
 [subs="quotes"]
@@ -64,7 +65,7 @@ $ {{ cookiecutter.pkg_name }} *[--help]*
 // ...
 
 
-== Extra: Running without Installing
+== Extra: Run using Docker
 See link:README_DOCKER.adoc[DOCKER].
 
 
