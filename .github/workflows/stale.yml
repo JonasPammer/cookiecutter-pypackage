@@ -20,11 +20,11 @@ jobs:
     steps:
       - uses: actions/stale@v5
         with:
-          repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 30 # default: 60
           days-before-close: 7 # default: 7
           only-labels: "question" # Stale/Close only issues that have been looked at and tagged with this github defaultly-created tag
-          exempt-assignees: "{{ cookiecutter.github_username }}"
+          exempt-assignees: "jonaspammer"
 
           stale-issue-message:
             "This issue has been marked 'stale' due to lack of recent activity.

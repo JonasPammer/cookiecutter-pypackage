@@ -19,6 +19,6 @@ jobs:
       - uses: actions/checkout@v3
       - uses: lannonbr/issue-label-manager-action@3.0.0
         env:
-          GITHUB_TOKEN: "{% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           delete: true # will delete any labels that aren't in the .github/labels.json (this is set to false by default)
