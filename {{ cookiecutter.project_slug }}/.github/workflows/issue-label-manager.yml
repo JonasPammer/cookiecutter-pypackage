@@ -9,6 +9,7 @@ permissions:
     branches:
       - master
     paths:
+      - ".github/workflows/issue-label-manager.yml"
       - ".github/labels.json"
 
 jobs:
