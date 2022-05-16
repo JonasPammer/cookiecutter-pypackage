@@ -1,0 +1,109 @@
+= {{ cookiecutter.project_name }}
+{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>;
+:toc:
+:toclevels: 3
+:toc-placement!:
+:source-highlighter: rouge
+
+ifdef::env-github[]
+// https://gist.github.com/dcode/0cfbf2699a1fe9b46ff04c41721dda74#admonitions
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+// Very Relevant Status Badges
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml/badge.svg[CI Status]]
+{%- if cookiecutter.will_be_uploaded_to_pypi == 'y' %}
+image:https://img.shields.io/pypi/pyversions/{{ cookiecutter.pkg_name }}.svg[Python Versions]
+{% endif %}
+
+
+A Python Package to {{ cookiecutter.project_short_description }}.
+
+
+toc::[]
+
+== Features
+
+...
+
+
+== System Requirements
+
+* Python 3.7 / PyPy 3.7 or above
+
+== Installing
+
+This package is available at https://pypi.org/project/{{ cookiecutter.pkg_name }}[PyPi].
+
+I recommend you to install using https://github.com/pypa/pipx[pipx] -
+a tool that helps installing and running end-user applications written in Python
+without worrying about any virtualenv magic:
+
+----
+$ pipx install {{ cookiecutter.pkg_name }}
+----
+
+But you can of course also install it using normal pip or in your virtual environment:
+
+----
+$ python3 -m pip install {{ cookiecutter.pkg_name }}
+----
+
+
+== Usage
+
+[subs="quotes"]
+----
+$ {{ cookiecutter.pkg_name }} *[--help]*
+----
+
+// ...
+
+
+== Extra: Run using Docker
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml/badge.svg[Docker Workflow Status]]
+
+This Project also offers a best-practiced Dockerfile to run this package in an ensured-to-be-working environment:
+
+Details in link:README_DOCKER.adoc[README_DOCKER].
+
+
+[[development]]
+== 📝 Development
+image:https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white[pre-commit, link=https://github.com/pre-commit/pre-commit]
+https://results.pre-commit.ci/latest/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/master[image:https://results.pre-commit.ci/badge/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/master.svg[pre-commit.ci status]]
+https://github.com/psf/black[image:https://img.shields.io/badge/code%20style-black-000000.svg[code style: black]]
+https://conventionalcommits.org[image:https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg[Conventional Commits]]
+
+include::DEVELOPMENT.adoc[]
+
+
+[[contributing]]
+== 💪 Contributing image:https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square[PRs Welcome]
+https://open.vscode.dev/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}[image:https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc[Open in Visual Studio Code]]
+
+include::CONTRIBUTING.adoc[]
+
+
+[[changelog]]
+== 🗒 Changelog
+Please refer to the
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/releases[Release Page of this Repository]
+for a human changelog of the corresponding
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/tags[Tags (Versions) of this Project].
+
+Note that this Project adheres to Semantic Versioning.
+Please report any accidental breaking changes of a minor version update.
+
+
+[[license]]
+== ⚖️ License
+
+.link:LICENSE[]
+----
+include::LICENSE[]
+----
