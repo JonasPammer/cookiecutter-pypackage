@@ -52,7 +52,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pre-commit
-          key: ${{ hashFiles('.pre-commit-config.yaml') }}
+          key: {% raw %}${{ hashFiles('.pre-commit-config.yaml') }}{% endraw %}
 
       - name: install development dependencies
         run: pip3 install -r requirements-dev.txt
