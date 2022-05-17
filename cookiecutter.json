@@ -1,10 +1,10 @@
 {
   "full_name": "Jonas Pammer",
-  "github_username": "JonasPammer",
-  "dockerhub_username": "{{ cookiecutter.github_username.lower() }}",
   "email": "opensource@jonaspammer.at",
+  "github_username": "JonasPammer",
   "code_of_conduct_enforcement_contact_email": "opensource@jonaspammer.at",
 
+  "dockerhub_username": "{{ cookiecutter.github_username.lower() }}",
   "will_be_uploaded_to_pypi": "y",
   "pypi_username": "{{ cookiecutter.github_username }}",
   "project_name": null,
