@@ -1,13 +1,14 @@
 default_context:
   full_name: "Jonas Pammer"
-  github_username: "JonasPammer"
-  dockerhub_username: "JonasPammer"
   email: "opensource@jonaspammer.at"
+  github_username: "JonasPammer"
   code_of_conduct_enforcement_contact_email: "opensource@jonaspammer.at"
 
-  will_be_uploaded_to_pypi: "y"
-  pypi_username: "jonaspammer"
   project_name: "Some Package"
   project_short_description: "An Python Package for..."
+
+  dockerhub_username: "JonasPammer"
+  pypi_username: "jonaspammer"
+  will_be_uploaded_to_pypi: "y"
   command_line_interface: "Click"
   use_pytest: "y"
