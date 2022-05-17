@@ -1,5 +1,6 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,jetbrains+all,virtualenv,linux,svn,windows,python
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,jetbrains+all,virtualenv,linux,svn,windows,python
+
+# Created by https://www.toptal.com/developers/gitignore/api/windows,linux,visualstudiocode,jetbrains+all,svn,virtualenv,python
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,visualstudiocode,jetbrains+all,svn,virtualenv,python
 
 ### JetBrains+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -208,7 +209,15 @@ ipython_config.py
 #   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
 #poetry.lock
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/#use-with-ide
+.pdm.toml
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
 
 # Celery stuff
@@ -293,6 +302,10 @@ pip-selfcheck.json
 .ionide
 
 # Support for Project snippet scope
+.vscode/*.code-snippets
+
+# Ignore code-workspaces
+*.code-workspace
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -320,4 +333,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,jetbrains+all,virtualenv,linux,ansible,svn,windows,python
+# End of https://www.toptal.com/developers/gitignore/api/windows,linux,visualstudiocode,jetbrains+all,svn,virtualenv,python
