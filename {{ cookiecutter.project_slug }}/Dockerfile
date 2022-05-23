@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4
 FROM python:3.7-slim-bullseye
 
 LABEL maintainer="{{ cookiecutter.email }}"
