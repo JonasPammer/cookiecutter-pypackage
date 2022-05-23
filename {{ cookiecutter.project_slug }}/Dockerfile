@@ -1,6 +1,5 @@
 # syntax=docker/dockerfile:1.4
 FROM python:3.7-slim-bullseye
-
 LABEL maintainer="{{ cookiecutter.email }}"
 LABEL org.opencontainers.source="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
