@@ -1,3 +1,12 @@
+[[development-system-dependencies]]
+=== 📌 Development Machine Dependencies
+
+* Python 3.7 or greater
+
+or (optional)
+
+* Docker
+
 [[development-dependencies]]
 === 📌 Development Dependencies
 Development Dependencies are defined in a
@@ -18,11 +27,7 @@ $ python3 -m pip install -r requirements-dev.txt
 === 🧪 Testing
 Automatic Tests are run on each Contribution using GitHub Workflows.
 
-The System Requirements for local testing are as follows:
-
-* Python3 with <<development-dependencies>> installed
-
-To run the tests, simply run `tox` on the command line.
+To run the tests yourself, simply run `tox` on the command line.
 
 
 [[cookiecutter]]
