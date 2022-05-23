@@ -30,11 +30,11 @@ RUN apt-get -qy update \
     && python3 -m pip install --no-cache-dir wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN chown -R secureappuser:secureappuser /app
+USER secureappuser
 
 ### Project-Specific Dockerfile Steps ###
 
-RUN chown -R secureappuser:secureappuser /app
-USER secureappuser
 WORKDIR /app
 COPY . .
 RUN pip3 install .
