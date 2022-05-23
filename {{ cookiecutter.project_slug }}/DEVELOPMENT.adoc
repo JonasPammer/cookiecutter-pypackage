@@ -14,6 +14,17 @@ $ python3 -m pip install -r requirements-dev.txt
 ----
 
 
+[[testing]]
+=== 🧪 Testing
+Automatic Tests are run on each Contribution using GitHub Workflows.
+
+The System Requirements for local testing are as follows:
+
+* Python3 with <<development-dependencies>> installed
+
+To run the tests, simply run `tox` on the command line.
+
+
 [[cookiecutter]]
 === 🍪 CookieCutter
 
@@ -44,10 +55,12 @@ Pull Requests even automatically get fixed by the same tool,
 at least by hooks that automatically alter files.
 
 [NOTE]
+====
 Not to confuse:
 Although some pre-commit hooks may be able to warn you about script-analyzed flaws in syntax or even code to some extend (for which reason pre-commit's hooks are *part of* the test suite),
 pre-commit itself does not run any real Test Suites.
 For Information on Testing, see <<testing>>.
+====
 
 [TIP]
 ====
@@ -60,14 +73,3 @@ aborting the commit themselves if a hook alarm'ed.
 
 You can also, for example, execute pre-commit's hooks at any time by running `pre-commit run --all-files`.
 ====
-
-
-[[testing]]
-=== 🧪 Testing
-Automatic Tests are run on each Contribution using GitHub Workflows.
-
-The System Requirements for local testing are as follows:
-
-* Python3 with <<development-dependencies>> installed
-
-To run the tests, simply run `tox` on the command line.
