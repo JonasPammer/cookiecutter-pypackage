@@ -56,7 +56,6 @@ jobs:
 
       - name: install development dependencies
         run: pip3 install -r requirements-dev.txt
-        working-directory: ./some-package
 
       # tox automatically installs local package
       - name: Run tox.
