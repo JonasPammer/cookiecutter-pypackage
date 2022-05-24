@@ -80,7 +80,8 @@ jobs:
         with:
           filename: coverage.xml
           fail_below_min: false
-          output: both
+          format: markdown
+          output: both # output to console and file
 
       - name: Add Coverage Report as Sticky PR Comment.
         uses: marocchino/sticky-pull-request-comment@v2
