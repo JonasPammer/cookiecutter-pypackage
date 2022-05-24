@@ -32,8 +32,10 @@ permissions: read-all
 
 jobs:
   ci:
-    name: Tox
+    name: Run Tox and generate Coverage Report.
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: check out the codebase
         uses: actions/checkout@v3
