@@ -58,7 +58,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: project-venv
-          key: ${{ hashFiles('requirements-dev.txt') }}
+          key: {% raw %}${{ hashFiles('requirements-dev.txt') }}{% endraw %}
 
       - name: install development dependencies
         run: |
