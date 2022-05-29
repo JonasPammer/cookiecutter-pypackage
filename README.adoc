@@ -107,19 +107,19 @@ Enter the project and take a look around:
 
 [subs="+quotes,attributes"]
 ----
-$ *cd ##my-pypackage##*
-~/##my-pypackage##$ *ls*
+$ *cd ##{cc-example-name}##*
+~/##{cc-example-name}##$ *ls*
 ----
 
 Create a git repo and push it there:
 
 [subs="+quotes,attributes"]
 ----
-~/##my-pypackage##$ *git init*
-~/##my-pypackage##$ *git add .*
-~/##my-pypackage##$ *git commit -m "chore: create from cookiecutter"*
-~/##my-pypackage##$ *git remote add origin git@github.com:##JonasPammer/my-pypackage##.git*
-~/##my-pypackage##$ *git push -u origin master*
+~/##{cc-example-name}##$ *git init*
+~/##{cc-example-name}##$ *git add .*
+~/##{cc-example-name}##$ *git commit -m "chore: create from cookiecutter"*
+~/##{cc-example-name}##$ *git remote add origin git@github.com:##JonasPammer/{cc-example-name}##.git*
+~/##{cc-example-name}##$ *git push -u origin master*
 ----
 
 Now take a look at your repo.
