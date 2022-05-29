@@ -9,7 +9,6 @@ permissions:
       - master
     paths:
       - ".github/workflows/gh-pages.yml"
-      - "meta/main.yml"
       - "CHANGELOG.adoc"
       - "CODE_OF_CONDUCT.md"
       - "CONTRIBUTING.adoc"
@@ -24,12 +23,12 @@ jobs:
       - name: check out the codebase
         uses: actions/checkout@v2
 
-      - name: setup Ruby
+      - name: setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "2.7.0"
 
-      - name: install Asciidoctor
+      - name: install asciidoctor
         run: gem install --no-document asciidoctor asciidoctor-reducer rouge coderay
 
       - name: Generate README.adoc using ascidoctor-reducer.
