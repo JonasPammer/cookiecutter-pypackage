@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      ### GENERIC COOKIECUTTER INITIALIZATION STEPS ###
       - name: check out the codebase
         uses: actions/checkout@v3
 
@@ -75,12 +76,15 @@ jobs:
           pre-commit run --all-files --show-diff-on-failure
         working-directory: ./some-package
 
+      ### COOKIECUTTER SPECIFIC STEPS ###
+      ## RUN TESTS ##
       - name: Run tox in generated project
         run: |
           source project-venv/bin/activate
           tox
         working-directory: ./some-package
 
+      ## TEST DOCKERFILE ##
       - name: set up qemu
         uses: docker/setup-qemu-action@v1
 
