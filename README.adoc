@@ -18,8 +18,6 @@ https://github.com/JonasPammer/cookiecutter-pypackage/actions/workflows/ci.yml[i
 
 Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for creating Python Packages.
 
-toc::[]
-
 
 == Features
 
