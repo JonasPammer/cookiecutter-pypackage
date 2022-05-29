@@ -86,6 +86,55 @@ Tags not starting with `v` are not processed by this GitHub Workflow.
 ====
 
 
+== Usage
+
+First, get https://github.com/cruft/cruft[Cruft].
+It's a tool built in Cookiecutter that will allow you to keep up-to-date with the changes made to this cookiecutter.
+
+[subs="+quotes,attributes"]
+----
+$ *python3 -m pip install cruft*
+----
+
+Now run it against this repo:
+
+[subs="+quotes,attributes"]
+----
+$ *cruft create https://github.com/JonasPammer/cookiecutter-pypackage.git*
+----
+
+Answer the prompts with your own desired options.
+
+Enter the project and take a look around:
+
+[subs="+quotes,attributes"]
+----
+$ *cd ##my-pypackage##*
+~/##my-pypackage##$ *ls*
+----
+
+Create a git repo and push it there:
+
+[subs="+quotes,attributes"]
+----
+~/##my-pypackage##$ *git init*
+~/##my-pypackage##$ *git add .*
+~/##my-pypackage##$ *git commit -m "chore: create from cookiecutter"*
+~/##my-pypackage##$ *git remote add origin git@github.com:##JonasPammer/my-pypackage##.git*
+~/##my-pypackage##$ *git push -u origin master*
+----
+
+Now take a look at your repo. 
+Don't forget to carefully look at the generated README -
+It contains all relevant Development Documentation.
+
+Awesome, right?
+
+[NOTE]
+This CookieCutter does not configure your GitHub Repository.
+Please read the notes found in this README and perform the documented manual steps
+(e.g., Creating GitHub Action Secrets).
+
 
 == Generic Features
 
