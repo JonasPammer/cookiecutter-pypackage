@@ -166,7 +166,6 @@ To do so, go to the _Settings_ page of your GitHub repository. Under _Pages / So
 * Includes a Beginner-Friendly Contribution Documentation file, inspired by
   https://github.com/auth0/open-source-template/blob/master/GENERAL-CONTRIBUTING.md[Auth0's Open Source Template].
 
-
 === Development
 
 * Assumes MIT License.
