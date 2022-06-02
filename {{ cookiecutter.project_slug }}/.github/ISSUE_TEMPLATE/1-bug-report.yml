@@ -28,6 +28,9 @@ body:
     attributes:
       label: Environment Information
       description: Tell us about your Operating System.
+      placeholder: |
+        Windows 10
+        Python 3.7
     validations:
       required: true
   - type: input
