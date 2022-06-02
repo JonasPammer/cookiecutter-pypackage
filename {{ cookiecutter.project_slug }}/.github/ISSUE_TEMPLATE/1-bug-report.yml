@@ -16,17 +16,17 @@ body:
       placeholder: A clear description of what the bug is about (I was doing ... I ran ... I expected ... I got ...).
     validations:
       required: true
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: What version of the package did you run?
-    validations:
-      required: true
   - type: textarea
     id: host
     attributes:
       label: Environment Information
       placeholder: Tell us about your Operating System.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package Version
+      description: What version of the package did you run?
     validations:
       required: true
