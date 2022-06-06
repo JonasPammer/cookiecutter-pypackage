@@ -99,6 +99,13 @@ repos:
       - id: reorder-python-imports
         args: [--py37-plus, --add-import, "from __future__ import annotations"]
 
+  # formats docstrings to follow PEP 257.
+  - repo: https://github.com/PyCQA/docformatter
+    rev: v1.4
+    hooks:
+      - id: docformatter
+        args: [--in-place]
+
   # flake8 is a python tool that glues together…
   #   pycodestyle (befriended with `black` through config changes),
   #   pyflakes (detects various error by parsing [not importing] source file's),
