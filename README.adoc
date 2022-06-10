@@ -175,7 +175,7 @@ To do so, go to the _Settings_ page of your GitHub repository. Under _Pages / So
   https://yamllint.readthedocs.io/en/stable/configuration.html#default-configuration[`yamllint` configuration]
   (enforced through pre-commit and checked by CI)
 * Assumes enforcement of
-  https://gist.github.com/JonasPammer/4ea577854ae10afe644bff366d7b2a8a[Conventional Commit]
+  https://github.com/JonasPammer/JonasPammer/blob/master/demystifying/conventional_commits.adoc[Conventional Commit]
   (checked by a pre-commit hook if activated)
 +
 [IMPORTANT]
