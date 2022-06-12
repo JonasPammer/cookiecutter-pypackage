@@ -29,7 +29,7 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 * Static typing with http://mypy-lang.org/[mypy]
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
 * Git hooks that run all the above with pre-commit
-* Testing with https://docs.pytest.org/en/latest/[pytest] 
+* Testing with https://docs.pytest.org/en/latest/[pytest]
   and https://github.com/tox-dev/tox[tox]
 * Deployment / Execution ready through Dockerfile that follows all best-practices
   (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
