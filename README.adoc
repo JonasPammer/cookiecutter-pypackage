@@ -21,14 +21,16 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 
 == Features
 
-* Formatting with https://github.com/psf/black[black]
-and https://prettier.io/[prettier]
+* Formatting with https://github.com/psf/black[black],
+  https://github.com/PyCQA/docformatter[docformatter] and
+  https://prettier.io/[prettier]
 * Import sorting with https://github.com/asottile/reorder_python_imports[reorder-python-imports]
-(https://github.com/timothycrosley/isort[isort] alternative)
+  (https://github.com/timothycrosley/isort[isort] alternative)
 * Static typing with http://mypy-lang.org/[mypy]
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
 * Git hooks that run all the above with pre-commit
-* Testing with https://docs.pytest.org/en/latest/[pytest] and tox
+* Testing with https://docs.pytest.org/en/latest/[pytest] 
+  and https://github.com/tox-dev/tox[tox]
 * Deployment / Execution ready through Dockerfile that follows all best-practices
   (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
    https://pythonspeed.com/docker/[2])
