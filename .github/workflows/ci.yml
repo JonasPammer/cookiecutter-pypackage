@@ -23,12 +23,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: set up python 3 (pypy)
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: "pypy-3.7"
 
       - name: set up python 3
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: "3.7"
 
