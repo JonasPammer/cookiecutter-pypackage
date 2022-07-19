@@ -77,5 +77,5 @@ jobs:
       - name: generate coverage xml
         run: .tox/py3/bin/coverage xml -o coverage.xml
 
-      - name: Upload coverage to Codecov
+      - name: Upload coverage to Codecov and add Pull Request comment
         uses: codecov/codecov-action@v3
