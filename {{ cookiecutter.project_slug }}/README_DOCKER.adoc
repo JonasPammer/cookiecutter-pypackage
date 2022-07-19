@@ -2,9 +2,8 @@
 {{ cookiecutter.full_name }} <{{ cookiecutter.email }}>;
 
 https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml/badge.svg[Docker Workflow Status]]
-
 ifdef::env-github[]
-https://hub.docker.com/repository/docker/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}[image:https://img.shields.io/badge/Link_to-Docker_Hub-blue[]
+https://hub.docker.com/repository/docker/{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}[image:https://img.shields.io/badge/Link_to-Docker_Hub-blue[]]
 endif::[]
 
 This image can be used to run
