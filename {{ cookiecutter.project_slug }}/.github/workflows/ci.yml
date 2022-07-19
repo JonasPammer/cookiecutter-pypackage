@@ -77,17 +77,5 @@ jobs:
       - name: generate coverage xml
         run: .tox/py3/bin/coverage xml -o coverage.xml
 
-      - name: Generate Code Coverage Summary Report.
-        uses: irongut/CodeCoverageSummary@v1.2.0
-        with:
-          filename: coverage.xml
-          fail_below_min: false
-          format: markdown
-          output: both # output to console and file
-
-      - name: Add Coverage Report as Sticky PR Comment.
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: github.event_name == 'pull_request'
-        with:
-          recreate: true
-          path: code-coverage-results.md
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
