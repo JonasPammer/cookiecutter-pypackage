@@ -5,8 +5,7 @@
   from_name: enhancement # github default
 - name: kind/bug
   color: "d73a4a"
-  description: "Categorizes issue or PR as related to a bug (i.e. something is not
-    working)."
+  description: "Categorizes issue or PR as related to a bug (i.e. something is not working)."
   from_name: bug # github default
 - name: kind/test
   color: "775fcb"
@@ -20,8 +19,7 @@
   description: "Categorizes issue or PR as related to security."
 - name: kind/infrastructure
   color: "775fcb"
-  description: "Categorizes issue or PR improving development/releases/Continious Integration
-    (CI)."
+  description: "Categorizes issue or PR improving development/releases/Continious Integration (CI)."
 - name: kind/dependencies
   color: "ededed"
   description: "Categorizes pull requests that update a dependency file."
