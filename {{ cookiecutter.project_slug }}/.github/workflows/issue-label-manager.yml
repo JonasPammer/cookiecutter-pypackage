@@ -21,6 +21,6 @@ jobs:
       - uses: crazy-max/ghaction-github-labeler@v4
         if: success()
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
           yaml-file: .github/labels.yml
           skip-delete: false # false -> delete labels that aren't in `yaml-file`
