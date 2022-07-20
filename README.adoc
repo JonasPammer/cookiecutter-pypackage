@@ -108,7 +108,8 @@ $ *cruft create https://github.com/JonasPammer/cookiecutter-pypackage.git*
 
 Answer the prompts with your own desired options.
 
-Enter the project and take a look around:
+Enter the project and take a look around
+(replace "{cc-example-name}" with your project slug):
 
 [subs="+quotes,attributes"]
 ----
@@ -116,7 +117,9 @@ $ *cd ##{cc-example-name}##*
 ~/##{cc-example-name}##$ *ls*
 ----
 
-Create a git repo and push it there:
+Create a git repo and push it there
+(replace "YourGitHubName" with your github profile name
+ and "{cc-example-name}" with your project slug):
 
 [subs="+quotes,attributes"]
 ----
