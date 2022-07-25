@@ -80,6 +80,8 @@ jobs:
       ### COOKIECUTTER SPECIFIC STEPS ###
       ## RUN TESTS ##
       - name: Run tox in generated project
+        env:
+          TOX_SKIP_ENV: pre-commit
         run: |
           source project-venv/bin/activate
           tox
