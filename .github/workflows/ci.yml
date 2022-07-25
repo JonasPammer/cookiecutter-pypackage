@@ -48,24 +48,25 @@ jobs:
         uses: actions/cache@v3
         with:
           path: project-venv
-          key: ${{ hashFiles('*/requirements-*.txt') }}
+          key: ${{ hashFiles('*/requirements*.txt') }}
 
       - name: install cookiecutter development dependencies
         run: |
           python3 -m venv cookiecutter-venv
           source cookiecutter-venv/bin/activate
-          pip3 install -r requirements-dev.txt
+          python3 -m pip install -r requirements-dev.txt
 
       - name: Generate example project from cookiecutter.
         run: |
           source cookiecutter-venv/bin/activate
           cookiecutter . --config-file .github/cookiecutter-example.yml --no-input
 
-      - name: install development dependencies of generated project
+      - name: install dependencies of generated project
         run: |
           python3 -m venv project-venv
           source project-venv/bin/activate
-          pip3 install -r requirements-dev.txt
+          python3 -m pip install -r requirements-dev.txt
+          python3 -m pip install -r requirements.txt
         working-directory: ./some-package
 
       - name: Run pre-commit on all files in generated project

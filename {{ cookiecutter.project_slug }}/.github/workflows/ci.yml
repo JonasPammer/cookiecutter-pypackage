@@ -62,13 +62,14 @@ jobs:
           path: project-venv
           key: {% raw %}${{ hashFiles('requirements-dev.txt') }}{% endraw %}
 
-      - name: install development dependencies
+      - name: install dependencies
         run: |
           python3 -m venv project-venv
           source project-venv/bin/activate
           pip3 install -r requirements-dev.txt
+          pip3 install -r requirements.txt
 
-      # tox automatically installs local package
+      # tox automatically pip installs local directory
       - name: Run tox.
         run: |
           source project-venv/bin/activate
