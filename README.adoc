@@ -22,6 +22,8 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 
 == Features
 
+=== At-a-glance
+
 * Formatting with https://github.com/psf/black[black],
   https://github.com/PyCQA/docformatter[docformatter] and
   https://prettier.io/[prettier]
@@ -97,7 +99,7 @@ Tags not starting with `v` are not processed by this GitHub Workflow.
 +
 [NOTE]
 ====
-*Requires* the secrets `PYPI_TOKEN`
+*Requires* the secrets `PYPI_API_KEY`
 to be present in the GitHub repository or organization!
 ====
 
