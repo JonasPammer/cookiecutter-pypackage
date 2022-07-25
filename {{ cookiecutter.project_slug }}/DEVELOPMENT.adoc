@@ -66,8 +66,7 @@ or/and
 ----
 
 [[testing]]
-=== 🧪 Testing
-https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}[image:https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/branch/master/graph/badge.svg[codecov code coverage on master]]
+=== 🧪 Testing https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}[image:https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/branch/master/graph/badge.svg[codecov code coverage on master]]
 
 Automatic Tests are run on each Contribution using GitHub Workflows.
 
