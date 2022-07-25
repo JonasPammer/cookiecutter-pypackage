@@ -43,7 +43,7 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 ---
 
 * Command line interface using argparse or Click (optional)
-* Automatic build-and-release to https://pypi.org/[PyPI] when pushing a new tag to master.
+* Automatic build-and-release to https://pypi.org/[PyPI] when pushing a new tag to master
 * Deployment / Execution ready through Dockerfile that follows all best-practices
   (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
    https://pythonspeed.com/docker/[2])
