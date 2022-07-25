@@ -30,10 +30,13 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 * Static typing with http://mypy-lang.org/[mypy]
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
 * Git hooks that run all the above with pre-commit
+
 * Testing with https://docs.pytest.org/en/latest/[pytest] (preferred) or unittest (optional)
   and https://github.com/tox-dev/tox[tox]
-* Command line interface using argparse or Click (optional)
 * Continuous Integration with https://github.com/features/actions[GitHub Actions]
+
+* Command line interface using argparse or Click (optional)
+* Auto build-and-release to https://pypi.org/[PyPI] when pushing a new tag to master.
 * Deployment / Execution ready through Dockerfile that follows all best-practices
   (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
    https://pythonspeed.com/docker/[2])
@@ -88,6 +91,20 @@ in below format (based on the SemVer example):
 Tags not starting with `v` are not processed by this GitHub Workflow.
 ====
 
+=== PyPI
+
+* Includes a GitHub Workflow to automatically build and upload the package to PyPI.
++
+[NOTE]
+====
+*Requires* the secrets `PYPI_TOKEN`
+to be present in the GitHub repository or organization!
+====
+
+=== Development
+
+* Versions are managed through tags
+  which can be simply bumped using https://github.com/c4urself/bump2version[`bump2version`].
 
 == Usage
 
@@ -177,6 +194,7 @@ To do so, go to the _Settings_ page of your GitHub repository. Under _Pages / So
 === Development
 
 * Assumes MIT License.
+* Changelog is assumed to be managed through the use of GitHub Releases.
 * Includes numerous https://pre-commit.com/[pre-commit] hooks to automatically
   find linting issues, format your files, and find common issues of version control and source code
 * Includes a very much standard
