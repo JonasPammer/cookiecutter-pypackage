@@ -35,7 +35,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pre-commit
-          key: ${{ hashFiles('.pre-commit-config.yaml') }}
+          key: {% raw %}${{ hashFiles('.pre-commit-config.yaml') }}{% endraw %}
 
       - name: install asciidoctor and other relevant ruby gems
         run: gem install --no-document asciidoctor asciidoctor-reducer rouge coderay
