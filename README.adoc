@@ -33,16 +33,20 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
 * Git hooks that run all the above with https://pre-commit.com/[pre-commit]
 
+---
+
 * Testing with https://docs.pytest.org/en/latest/[pytest] (preferred) or unittest (optional)
   and https://github.com/tox-dev/tox[tox]
 * Continuous Integration with https://github.com/features/actions[GitHub Actions]
+* Code Coverage Reporting with https://about.codecov.io/[Codecov] through CI
+
+---
 
 * Command line interface using argparse or Click (optional)
-* Auto build-and-release to https://pypi.org/[PyPI] when pushing a new tag to master.
+* Automatic build-and-release to https://pypi.org/[PyPI] when pushing a new tag to master.
 * Deployment / Execution ready through Dockerfile that follows all best-practices
   (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
    https://pythonspeed.com/docker/[2])
-* Code Coverage Reporting with https://about.codecov.io/[Codecov] through CI
 * Assumes Minimum Python Version of 3.7
 
 === GitHub
