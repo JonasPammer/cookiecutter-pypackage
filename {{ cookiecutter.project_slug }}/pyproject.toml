@@ -1,0 +1,6 @@
+# https://setuptools.pypa.io/en/latest/userguide/quickstart.html#basic-use
+# When creating a Python package, you must provide a pyproject.toml file
+# containing a build-system section similar to the example below:
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

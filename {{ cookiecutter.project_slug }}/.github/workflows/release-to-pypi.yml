@@ -1,0 +1,49 @@
+name: Build and Upload to PyPI
+permissions: read-all
+
+"on":
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v3
+
+      - name: set up python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: setup/activate project-venv cache
+        uses: actions/cache@v3
+        with:
+          path: project-venv
+          key: ${{ hashFiles('requirements-*.txt') }}
+
+      - name: Install dependencies
+        run: |
+          python3 -m venv project-venv
+          source project-venv/bin/activate
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements-build.txt
+
+      # https://setuptools.pypa.io/en/latest/deprecated/commands.html
+      # > While it is perfectly fine that users write setup.py files to configure a package build
+      # > (e.g. to specify binary extensions or customize commands), on recent versions of setuptools,
+      # > running python setup.py directly as a script is considered deprecated.
+      # > ...
+      # > If you want to create sdist or wheel distributions
+      # > the recommendation is to use the command line tool provided by build:
+      - name: Build and publish
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_KEY }}
+        run: |
+          source project-venv/bin/activate
+          python3 -m build
+          twine upload dist/*
