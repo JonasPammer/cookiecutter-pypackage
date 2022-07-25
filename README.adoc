@@ -31,7 +31,7 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
   (https://github.com/timothycrosley/isort[isort] alternative)
 * Static typing with http://mypy-lang.org/[mypy]
 * Linting with http://flake8.pycqa.org/en/latest/[flake8]
-* Git hooks that run all the above with pre-commit
+* Git hooks that run all the above with https://pre-commit.com/[pre-commit]
 
 * Testing with https://docs.pytest.org/en/latest/[pytest] (preferred) or unittest (optional)
   and https://github.com/tox-dev/tox[tox]
