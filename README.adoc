@@ -35,10 +35,10 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 
 ---
 
+* Continuous Integration with https://github.com/features/actions[GitHub Actions]
 * Testing with https://docs.pytest.org/en/latest/[pytest] (preferred) or unittest (optional)
   and https://github.com/tox-dev/tox[tox]
 * Code Coverage Reporting with https://about.codecov.io/[Codecov] through CI
-* Continuous Integration with https://github.com/features/actions[GitHub Actions]
 
 ---
 
