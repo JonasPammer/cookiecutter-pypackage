@@ -10,8 +10,6 @@ attrs==21.4.0
     # via pytest
 binaryornot==0.4.4
     # via cookiecutter
-build==0.8.0
-    # via pip-tools
 bump2version==1.0.1
     # via -r requirements-dev.in
 certifi==2022.6.15
@@ -26,7 +24,6 @@ click==8.1.3
     # via
     #   cookiecutter
     #   cruft
-    #   pip-tools
     #   typer
 cookiecutter==1.7.3
     # via cruft
@@ -66,13 +63,8 @@ nodeenv==1.7.0
     # via pre-commit
 packaging==21.3
     # via
-    #   build
     #   pytest
     #   tox
-pep517==0.12.0
-    # via build
-pip-tools==6.8.0
-    # via -r requirements-dev.in
 platformdirs==2.5.2
     # via virtualenv
 pluggy==1.0.0
@@ -118,10 +110,7 @@ toml==0.10.2
     #   pre-commit
     #   tox
 tomli==2.0.1
-    # via
-    #   build
-    #   pep517
-    #   pytest
+    # via pytest
 tox==3.25.1
     # via -r requirements-dev.in
 typer==0.4.2
@@ -132,9 +121,6 @@ virtualenv==20.15.1
     # via
     #   pre-commit
     #   tox
-wheel==0.37.1
-    # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
-# pip
 # setuptools

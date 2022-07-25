@@ -43,28 +43,27 @@ you need to re-run the install command (e.g. to register new cli scripts).
 ----
 (venv)$ *python3 -m pip install -e .*
 ----
+====
 
-In Addition:
-When you alter the dependencies of the package
-you need to re-run the command to generate the `requirements.txt` file:
+[[updating-dependencies]]
+=== 📌 How to manually update pinned dependencies
+
+pre-commit takes care of updating the "pinned requirement files" (`requirements*.txt`)
+when their counterpart definition changes.
+
+You may want to run the following commands
+to manually trigger a regeneration though:
 
 [subs="+quotes,attributes"]
 ----
-(venv)$ *pip-compile requirements.txt*
-----
-====
+(venv)$ *python3 -m pip install pip-tools*
 
-[NOTE]
-====
-When you alter the `requirements-*.in` files you need to re-run
-the command which generates their `.txt` counterpart.
-
-[subs="+quotes,attributes"]
-----
+(venv)$ *pip-compile*
+or/and
 (venv)$ *pip-compile requirements-dev.in*
+or/and
 (venv)$ *pip-compile requirements-build.in*
 ----
-====
 
 [[testing]]
 === 🧪 Testing

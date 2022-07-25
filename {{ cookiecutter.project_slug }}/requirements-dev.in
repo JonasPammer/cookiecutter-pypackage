@@ -2,7 +2,6 @@ bump2version
 covdefaults
 coverage
 cruft
-pip-tools
 pre-commit
 pytest
 pytest-env
