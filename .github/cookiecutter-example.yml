@@ -9,6 +9,5 @@ default_context:
 
   dockerhub_username: "JonasPammer"
   pypi_username: "jonaspammer"
-  will_be_uploaded_to_pypi: "y"
   command_line_interface: "Click"
   use_pytest: "y"

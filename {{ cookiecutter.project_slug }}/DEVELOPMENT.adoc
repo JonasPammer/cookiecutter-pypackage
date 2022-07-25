@@ -14,12 +14,55 @@ https://pip.pypa.io/en/stable/user_guide/#requirements-files[pip requirements fi
 named `requirements-dev.txt`.
 Example Installation Instructions for Linux are shown below:
 
+[subs="+quotes,attributes"]
 ----
 # "optional": create a python virtualenv and activate it for the current shell session
-$ python3 -m venv venv
-$ source venv/bin/activate
+$ *python3 -m venv venv*
+$ *source venv/bin/activate*
 
-$ python3 -m pip install -r requirements-dev.txt
+(venv)$ *python3 -m pip install -r requirements-dev.txt*
+----
+
+Installing the package locally from live source itself can be done using the following commands:
+
+[subs="+quotes,attributes"]
+----
+# "optional": ensure it actually works by using previously-pinned versions
+(venv)$ *python3 -m pip install -r requirements.txt*
+
+# install package from path in develop mode
+(venv)$ *python3 -m pip install -e .*
+----
+
+[NOTE]
+====
+When you alter the package definition (i.e. `setup.cfg`)
+you need to re-run the install command (e.g. to register new cli scripts).
+
+[subs="+quotes,attributes"]
+----
+(venv)$ *python3 -m pip install -e .*
+----
+====
+
+[[updating-dependencies]]
+=== 📌 How to manually update pinned dependencies
+
+pre-commit takes care of updating the "pinned requirement files" (`requirements*.txt`)
+when their counterpart definition changes.
+
+You may want to run the following commands
+to manually trigger a regeneration though:
+
+[subs="+quotes,attributes"]
+----
+(venv)$ *python3 -m pip install pip-tools*
+
+(venv)$ *pip-compile*
+or/and
+(venv)$ *pip-compile requirements-dev.in*
+or/and
+(venv)$ *pip-compile requirements-build.in*
 ----
 
 [[testing]]
@@ -29,6 +72,48 @@ https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project
 Automatic Tests are run on each Contribution using GitHub Workflows.
 
 To run the tests yourself, simply run `tox` on the command line.
+
+[[versioning]]
+=== 🔢 Versioning
+
+Versions are defined using https://git-scm.com/book/en/v2/Git-Basics-Tagging[Tags] which start with `v`.
+
+When a new tag is pushed,
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/release-to-pypi.yml[a GitHub CI workflow]
+(image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/release-to-pypi.yml/badge.svg[Release CI])
+takes care of building the wheels using
+https://pypi.org/project/build/[build]
+and uploading them to PyPI using
+https://pypi.org/project/twine/[twine].
+
+Version Bumps shall be made through the use of
+https://github.com/c4urself/bump2version[`bump2version`], e.g.:
+
+[subs="+quotes,attributes"]
+----
+$ *bump2version patch*
+or
+$ *bump2version minor*
+or
+$ *bump2version major*
+----
+
+This tool automatically updates the version string in the required files
+and creates a generic commit with a matching tag
+(as configured in `.bumpversion.cf`).
+
+[NOTE]
+====
+Do not forget that _just_ git push'ing does not push tags!
+Use:
+
+[subs="+quotes,attributes"]
+----
+$ *git push origin <tag_name>*
+or
+$ *git push origin $(git describe --match "v*")*
+----
+====
 
 [[cookiecutter]]
 === 🍪 CookieCutter

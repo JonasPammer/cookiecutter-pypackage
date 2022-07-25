@@ -69,7 +69,7 @@ repos:
       - id: requirements-txt-fixer
 
   - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v1.20.1
+    rev: v1.20.2
     hooks:
       - id: setup-cfg-fmt
 
@@ -79,12 +79,20 @@ repos:
       - id: mypy
         additional_dependencies: ["attrs>=21.0,<22", "types-PyYAML"] # as per setup.cfg
 
-  # pip-compile`s 'requirements.in' files as its recommended to have the 'requirements.txt' version
-  # checked into source control too.
   - repo: https://github.com/jazzband/pip-tools
-    rev: 6.6.0
+    rev: 6.8.0
     hooks:
       - id: pip-compile
+        name: pip-compile setup.cfg
+        files: ^(setup\.cfg|requirements\.txt)$
+      - id: pip-compile
+        name: pip-compile requirements-dev.in
+        args: [requirements-dev.in]
+        files: ^requirements-dev\.(in|txt)$
+      - id: pip-compile
+        name: pip-compile requirements-build.in
+        args: [requirements-build.in]
+        files: ^requirements-build\.(in|txt)$
 
   # the uncompromising (opinionated / barely configurable) PEP8 Python code formatter.
   - repo: https://github.com/psf/black

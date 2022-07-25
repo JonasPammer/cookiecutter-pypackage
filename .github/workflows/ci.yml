@@ -48,24 +48,25 @@ jobs:
         uses: actions/cache@v3
         with:
           path: project-venv
-          key: ${{ hashFiles('*/requirements-dev.txt') }}
+          key: ${{ hashFiles('*/requirements*.txt') }}
 
       - name: install cookiecutter development dependencies
         run: |
           python3 -m venv cookiecutter-venv
           source cookiecutter-venv/bin/activate
-          pip3 install -r requirements-dev.txt
+          python3 -m pip install -r requirements-dev.txt
 
       - name: Generate example project from cookiecutter.
         run: |
           source cookiecutter-venv/bin/activate
           cookiecutter . --config-file .github/cookiecutter-example.yml --no-input
 
-      - name: install development dependencies of generated project
+      - name: install dependencies of generated project
         run: |
           python3 -m venv project-venv
           source project-venv/bin/activate
-          pip3 install -r requirements-dev.txt
+          python3 -m pip install -r requirements-dev.txt
+          python3 -m pip install -r requirements.txt
         working-directory: ./some-package
 
       - name: Run pre-commit on all files in generated project
@@ -73,15 +74,32 @@ jobs:
           git init
           git add .
           source project-venv/bin/activate
-          pre-commit run --all-files --show-diff-on-failure
+          SKIP=pip-compile pre-commit run --all-files --show-diff-on-failure
         working-directory: ./some-package
 
       ### COOKIECUTTER SPECIFIC STEPS ###
       ## RUN TESTS ##
       - name: Run tox in generated project
+        env:
+          TOX_SKIP_ENV: pre-commit
         run: |
           source project-venv/bin/activate
           tox
+        working-directory: ./some-package
+
+      ## TEST SETUPTOOLS BUILD ##
+      # as per .github/workflows/release-to-pypi.yml
+      - name: install build dependencies of generated project
+        run: |
+          source project-venv/bin/activate
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements-build.txt
+        working-directory: ./some-package
+
+      - name: Build python package (wheel etc.)
+        run: |
+          source project-venv/bin/activate
+          python3 -m build
         working-directory: ./some-package
 
       ## TEST DOCKERFILE ##

@@ -16,9 +16,7 @@ endif::[]
 
 // Very Relevant Status Badges
 https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml/badge.svg[CI Status]]
-{%- if cookiecutter.will_be_uploaded_to_pypi == 'y' %}
 image:https://img.shields.io/pypi/pyversions/{{ cookiecutter.pkg_name }}.svg[Python Versions]
-{% endif %}
 
 
 A Python Package to {{ cookiecutter.project_short_description }}.
