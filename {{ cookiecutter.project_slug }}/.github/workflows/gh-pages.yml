@@ -1,5 +1,5 @@
 ---
-name: build self-contained README
+name: build self-contained READMEs
 permissions:
   pages: write
   contents: write
@@ -26,17 +26,41 @@ jobs:
         with:
           ruby-version: "2.7.0"
 
-      - name: install asciidoctor
+      - name: set up python 3
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.x"
+
+      - name: setup/activate pre-commit cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: install asciidoctor and other relevant ruby gems
         run: gem install --no-document asciidoctor asciidoctor-reducer rouge coderay
 
       - name: Generate README.adoc using ascidoctor-reducer.
         run: asciidoctor-reducer README.orig.adoc -o README.adoc
 
-      - name: Commit generated README.
+      - name: generate README.xml from README.adoc using ascidoctor
+        run: asciidoctor -b docbook README.adoc
+
+      - name: Generate README.md from README.xml using pandoc
+        uses: docker://pandoc/core:2.18
+        with:
+          args: "-f docbook -t markdown_strict README.xml -o README.md"
+
+      - name: pre-commit README.md
+        run: |
+          python3 -m pip install pre-commit
+          pre-commit run --files README.md || true
+
+      - name: Commit generated READMEs.
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "docs: reduce README.orig.adoc \n {% raw %}${{ github.event.head_commit.message }}{% endraw %}"
-          file_pattern: README.adoc
+          file_pattern: README.adoc README.md
           disable_globbing: true
 
       - name: Generate HTML
