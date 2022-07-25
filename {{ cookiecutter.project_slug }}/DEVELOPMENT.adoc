@@ -30,6 +30,48 @@ Automatic Tests are run on each Contribution using GitHub Workflows.
 
 To run the tests yourself, simply run `tox` on the command line.
 
+[[versioning]]
+=== 🔢 Versioning
+
+Versions are defined using https://git-scm.com/book/en/v2/Git-Basics-Tagging[Tags] which start with `v`.
+
+When a new tag is pushed,
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/release-to-pypi.yml[a GitHub CI workflow]
+(image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/release-to-pypi.yml/badge.svg[Release CI])
+takes care of building the wheels using
+https://pypi.org/project/build/[build]
+and uploading them to PyPI using
+https://pypi.org/project/twine/[twine].
+
+Version Bumps shall be made through the use of
+https://github.com/c4urself/bump2version[`bump2version`], e.g.:
+
+[subs="+quotes,attributes"]
+----
+$ *bump2version patch*
+or
+$ *bump2version minor*
+or
+$ *bump2version major*
+----
+
+This tool automatically updates the version string in the required files
+and creates a generic commit with a matching tag
+(as configured in `.bumpversion.cf`).
+
+[NOTE]
+====
+Do not forget that _just_ git push'ing does not push tags!
+Use:
+
+[subs="+quotes,attributes"]
+----
+$ *git push origin <tag_name>*
+or
+$ *git push origin $(git describe --match "v*")*
+----
+====
+
 [[cookiecutter]]
 === 🍪 CookieCutter
 
