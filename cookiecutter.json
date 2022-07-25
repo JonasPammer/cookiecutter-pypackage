@@ -11,7 +11,7 @@
 
   "dockerhub_username": "{{ cookiecutter.github_username.lower() }}",
   "pypi_username": "{{ cookiecutter.github_username }}",
-  "will_be_uploaded_to_pypi": "y",
+  "use_automated_pypi_deployment": "y",
   "command_line_interface": ["Click", "Argparse", "No command-line interface"],
   "use_pytest": "y"
 }
