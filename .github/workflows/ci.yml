@@ -74,7 +74,7 @@ jobs:
           git init
           git add .
           source project-venv/bin/activate
-          pre-commit run --all-files --show-diff-on-failure
+          SKIP=pip-compile pre-commit run --all-files --show-diff-on-failure
         working-directory: ./some-package
 
       ### COOKIECUTTER SPECIFIC STEPS ###
