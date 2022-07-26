@@ -3,12 +3,6 @@ name: CI
 permissions: read-all
 "on":
   workflow_dispatch:
-    inputs:
-      lint:
-        description: "Lint"
-        required: true
-        default: true
-        type: boolean
   pull_request:
   push:
     branches:
@@ -20,6 +14,7 @@ permissions: read-all
       - ".yamllint"
       - "pyproject.toml"
       - "requirements-dev.txt"
+      - "requirements.txt"
       - "tox.ini"
       # as per .dockerignore:
       - "setup.cfg"
