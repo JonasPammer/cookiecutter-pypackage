@@ -1,7 +1,7 @@
 = CookieCutter Python Package
 Jonas Pammer <opensource@jonaspammer.at>;
 :toc:
-:toclevels: 3
+:toclevels: 2
 :toc-placement!:
 :cc-example-name: my-python-project
 
