@@ -19,10 +19,14 @@ https://github.com/JonasPammer/cookiecutter-pypackage/actions/workflows/ci.yml[i
 
 Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for creating Python Packages.
 
+toc::[]
 
-== Features
+
+== Primary Features
 
 === At-a-glance
+
+// pre-commit
 
 * Formatting with https://github.com/psf/black[black],
   https://github.com/PyCQA/docformatter[docformatter] and
@@ -42,12 +46,12 @@ Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for 
 
 ---
 
+* Assumes Minimum Python Version of 3.7
 * Command line interface using argparse or Click (optional)
 * Automatic build-and-release to https://pypi.org/[PyPI] when pushing a new tag to master
 * Deployment / Execution ready through Dockerfile that follows all best-practices
   (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
    https://pythonspeed.com/docker/[2])
-* Assumes Minimum Python Version of 3.7
 
 === GitHub
 
@@ -165,7 +169,7 @@ Please read the notes found in this README and perform the documented manual ste
 (e.g., Creating GitHub Action Secrets).
 
 
-== Generic Features
+== Generic Features of this 🍪
 
 I maintain several CookieCutter's.
 Many of them share a similiar set of boilerplate files.
@@ -237,4 +241,4 @@ as it is assumed that the project is included in your `pre-commit.ci` account pr
   https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates[Dependabot]
   configuration file to check for updates of used GitHub Actions themselves on a monthly basis
 * Includes a GitHub Workflow to *declaratively manage labels*
-** The predefined `labels.json` is inspired by the kubernetes project
+** The predefined labels definition is inspired by the kubernetes project
