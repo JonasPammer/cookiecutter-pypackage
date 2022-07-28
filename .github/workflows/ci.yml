@@ -47,12 +47,6 @@ jobs:
           path: cookiecutter-venv
           key: ${{ hashFiles('requirements-dev.txt') }}
 
-      - name: setup/activate project-venv cache
-        uses: actions/cache@v3
-        with:
-          path: project-venv
-          key: ${{ hashFiles('*/requirements*.txt') }}
-
       - name: install cookiecutter development dependencies
         run: |
           python3 -m venv cookiecutter-venv
@@ -171,10 +165,10 @@ jobs:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: >-
             ${{ runner.os }}-pip-
-            ${{ hashFiles('./some-package/setup.*') }}-
-            ${{ hashFiles('./some-package/requirements*.txt') }}-
-            ${{ hashFiles('./some-package/tox.ini') }}-
-            ${{ hashFiles('./some-package/.pre-commit-config.yaml') }}
+            ${{ hashFiles('*/setup.*') }}-
+            ${{ hashFiles('*/requirements*.txt') }}-
+            ${{ hashFiles('*/tox.ini') }}-
+            ${{ hashFiles('*/.pre-commit-config.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
