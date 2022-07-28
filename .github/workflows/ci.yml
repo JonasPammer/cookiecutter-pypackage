@@ -193,13 +193,10 @@ jobs:
       # as per .github/workflows/release-to-pypi.yml
       - name: install build dependencies of generated project
         run: |
-          source project-venv/bin/activate
-          python3 -m pip install --upgrade pip
-          python3 -m pip install -r requirements-build.txt
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-build.txt
         working-directory: ./some-package
 
       - name: Build python package (wheel etc.)
-        run: |
-          source project-venv/bin/activate
-          python3 -m build
+        run: python -m build
         working-directory: ./some-package
