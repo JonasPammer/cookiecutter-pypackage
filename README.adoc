@@ -40,6 +40,11 @@ toc::[]
 ---
 
 * Continuous Integration with https://github.com/features/actions[GitHub Actions]
+  for on MacOS, Window and Ubuntu.
+  Testing Matrix includes CPython 3.7/3.8/3.9/3.10/3.11 as well as PyPy 3.7 with
+  previous (21.*), latest (upgradeable) and main (devel) version of pip for each OS -
+  resulting in 26~ Jobs
+  with a base Total Duration of 4-5 minutes.
 * Testing with https://docs.pytest.org/en/latest/[pytest] (preferred) or unittest (optional)
   and https://github.com/tox-dev/tox[tox]
 * Code Coverage Reporting with https://about.codecov.io/[Codecov] through CI
