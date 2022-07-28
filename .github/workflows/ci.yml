@@ -12,6 +12,11 @@ permissions: read-all
       - "cookiecutter.json"
       - "requirements-dev.txt"
 
+# Cancel running jobs when a pull request is updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
 jobs:
   test-generic:
     name: Generic CookieCutter Tests
