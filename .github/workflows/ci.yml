@@ -86,7 +86,9 @@ jobs:
           python-version: "pypy-3.7"
 
       - name: Run tox with '${{ env.TOXENV }}' environment
-        run: tox
+        run: |
+          source project-venv/bin/activate
+          tox
         working-directory: ./some-package
 
       ## TEST DOCKERFILE ##
