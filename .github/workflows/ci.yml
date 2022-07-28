@@ -12,25 +12,28 @@ permissions: read-all
       - "cookiecutter.json"
       - "requirements-dev.txt"
 
-jobs:
-  test-build:
-    name: Test
-    runs-on: ubuntu-latest
+# Cancel running jobs when a pull request is updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
 
+jobs:
+  test-generic:
+    name: Generic CookieCutter Tests
+    runs-on: ubuntu-latest
+    env:
+      PY_COLORS: 1
+      TOXENV: pypy3-piplatest
+      TOX_PARALLEL_NO_SPINNER: 1
     steps:
       ### GENERIC COOKIECUTTER INITIALIZATION STEPS ###
       - name: check out the codebase
         uses: actions/checkout@v3
 
-      - name: set up python 3 (pypy)
-        uses: actions/setup-python@v4
-        with:
-          python-version: "pypy-3.7"
-
       - name: set up python 3
         uses: actions/setup-python@v4
         with:
-          python-version: "3.7"
+          python-version: "3.x"
 
       - name: setup/activate pre-commit cache
         uses: actions/cache@v3
@@ -44,23 +47,15 @@ jobs:
           path: cookiecutter-venv
           key: ${{ hashFiles('requirements-dev.txt') }}
 
-      - name: setup/activate project-venv cache
-        uses: actions/cache@v3
-        with:
-          path: project-venv
-          key: ${{ hashFiles('*/requirements*.txt') }}
-
       - name: install cookiecutter development dependencies
         run: |
           python3 -m venv cookiecutter-venv
           source cookiecutter-venv/bin/activate
           python3 -m pip install -r requirements-dev.txt
-
       - name: Generate example project from cookiecutter.
         run: |
           source cookiecutter-venv/bin/activate
           cookiecutter . --config-file .github/cookiecutter-example.yml --no-input
-
       - name: install dependencies of generated project
         run: |
           python3 -m venv project-venv
@@ -78,28 +73,16 @@ jobs:
         working-directory: ./some-package
 
       ### COOKIECUTTER SPECIFIC STEPS ###
-      ## RUN TESTS ##
-      - name: Run tox in generated project
-        env:
-          TOX_SKIP_ENV: pre-commit
+      ## TEST PyPy ##
+      - name: set up python 3 (pypy)
+        uses: actions/setup-python@v4
+        with:
+          python-version: "pypy-3.7"
+
+      - name: Run tox with '${{ env.TOXENV }}' environment
         run: |
           source project-venv/bin/activate
           tox
-        working-directory: ./some-package
-
-      ## TEST SETUPTOOLS BUILD ##
-      # as per .github/workflows/release-to-pypi.yml
-      - name: install build dependencies of generated project
-        run: |
-          source project-venv/bin/activate
-          python3 -m pip install --upgrade pip
-          python3 -m pip install -r requirements-build.txt
-        working-directory: ./some-package
-
-      - name: Build python package (wheel etc.)
-        run: |
-          source project-venv/bin/activate
-          python3 -m build
         working-directory: ./some-package
 
       ## TEST DOCKERFILE ##
@@ -126,3 +109,95 @@ jobs:
           ignore-unfixed: true
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
+
+  # as per ci.yml of actual cookie
+  test:
+    name: Run Tox, Coverage and Build on ${{ matrix.os }} with CPython ${{ matrix.python-version }} / ${{ matrix.pip-version }} pip
+    runs-on: ${{ matrix.os }}-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - Ubuntu
+          - Windows
+          - macOS
+        python-version:
+          - "3.7"
+          - "3.8"
+          - "3.9"
+          - "3.10"
+        pip-version:
+          - "latest"
+          - "previous"
+    env:
+      PY_COLORS: 1
+      TOXENV: pip${{ matrix.pip-version }}
+      TOX_PARALLEL_NO_SPINNER: 1
+    steps:
+      ### INITIALIZATION ###
+      - name: check out the codebase
+        uses: actions/checkout@v3
+
+      - name: set up python ${{ matrix.python-version }} using github's action
+        uses: actions/setup-python@v3
+        if: "!endsWith(matrix.python-version, '-dev')"
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: log python version info (${{ matrix.python-version }})
+        run: python --version --version
+
+      - name: install cookiecutter development dependencies
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Generate example project from cookiecutter.
+        run: cookiecutter . --config-file .github/cookiecutter-example.yml --no-input
+
+      - name: get pip cache dir
+        id: pip-cache
+        run: |
+          echo "::set-output name=dir::$(pip cache dir)"
+
+      - name: setup/activate pip cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: >-
+            ${{ runner.os }}-pip-
+            ${{ hashFiles('*/setup.*') }}-
+            ${{ hashFiles('*/requirements*.txt') }}-
+            ${{ hashFiles('*/tox.ini') }}-
+            ${{ hashFiles('*/.pre-commit-config.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+
+      - name: install dependencies of generated project
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m pip install -r requirements.txt
+        working-directory: ./some-package
+
+      ### ACTUAL STEPS ###
+      ## RUN TESTS ##
+      - name: Run tox with '${{ env.TOXENV }}' environment
+        run: tox
+        working-directory: ./some-package
+
+      - name: generate coverage xml
+        run: .tox/pip${{ matrix.pip-version }}/${{ matrix.os == 'Windows' && 'Scripts' || 'bin' }}/coverage xml -o coverage.xml
+        working-directory: ./some-package
+
+
+      ## TEST SETUPTOOLS BUILD ##
+      # as per .github/workflows/release-to-pypi.yml
+      - name: install build dependencies of generated project
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-build.txt
+        working-directory: ./some-package
+
+      - name: Build python package (wheel etc.)
+        run: python -m build
+        working-directory: ./some-package
