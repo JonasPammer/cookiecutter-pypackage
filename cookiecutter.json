@@ -3,6 +3,17 @@
   "email": "opensource@jonaspammer.at",
   "github_username": "JonasPammer",
   "code_of_conduct_enforcement_contact_email": "opensource@jonaspammer.at",
+  "open_source_license": [
+    "MIT License",
+    "The Unlicense",
+    "Boost Software License 1.0",
+    "Apache License 2.0",
+    "Mozilla Public License 2.0",
+    "GNU LGPLv3",
+    "GNU GPLv3",
+    "GNU APGLv3",
+    "Not open source"
+  ],
 
   "project_name": null,
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
