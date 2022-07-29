@@ -56,6 +56,7 @@ jobs:
           severity: "CRITICAL,HIGH"
 
   dockerhub:
+    if: github.event_name != 'pull_request'
     needs: trivy-security
     runs-on: ubuntu-latest
     steps:
@@ -100,6 +101,7 @@ jobs:
           labels: {% raw %}${{ steps.meta.outputs.labels }}{% endraw %}
 
   dockerhub-readme:
+    if: github.event_name != 'pull_request'
     needs: dockerhub
     runs-on: ubuntu-latest
     steps:
