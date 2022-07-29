@@ -2,6 +2,7 @@
 **
 
 # ... except for dependencies and source
+!requirements.txt
 !setup.cfg
 !setup.py
 !LICENSE

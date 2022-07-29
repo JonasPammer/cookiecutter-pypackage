@@ -36,7 +36,8 @@ USER secureappuser
 
 WORKDIR /app
 COPY . .
-RUN pip3 install .
+RUN python3 -m pip install -r requirements.txt && \
+    python3 -m pip install .
 
 ### Configure Container Startup Configuration ###
 
