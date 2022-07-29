@@ -26,7 +26,7 @@ def main(argv: Sequence[str] | None = None):
 
 
 if __name__ == "__main__":
-{% if cookiecutter.command_line_interface|lower == 'click' %}
+{%- if cookiecutter.command_line_interface|lower == 'click' %}
     main()
 {%- else %}
     raise SystemExit(main())
