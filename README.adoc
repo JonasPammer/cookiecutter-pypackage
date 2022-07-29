@@ -205,10 +205,10 @@ To do so, go to the _Settings_ page of your GitHub repository. Under _Pages / So
 * Includes a Beginner-Friendly Development Documentation file
 * Includes a Beginner-Friendly Contribution Documentation file, inspired by
   https://github.com/auth0/open-source-template/blob/master/GENERAL-CONTRIBUTING.md[Auth0's Open Source Template].
+* Includes ability to select and generate any of the Licenses found on https://choosealicense.com/licenses/.
 
 === Development
 
-* Assumes MIT License.
 * Changelog is assumed to be managed through the use of GitHub Releases.
 * Includes numerous https://pre-commit.com/[pre-commit] hooks to automatically
   find linting issues, format your files, and find common issues of version control and source code
