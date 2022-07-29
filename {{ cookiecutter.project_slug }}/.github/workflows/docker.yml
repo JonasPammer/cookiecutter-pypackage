@@ -13,6 +13,7 @@ name: Docker Image Scan / Build / README
       - ".dockerignore"
       - "Dockerfile"
       # as per .dockerignore:
+      - "requirements.txt"
       - "setup.cfg"
       - "setup.py"
       - "LICENSE"

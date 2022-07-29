@@ -16,6 +16,7 @@ permissions: read-all
       - "requirements-dev.txt"
       - "tox.ini"
       # as per .dockerignore:
+      - "requirements.txt"
       - "setup.cfg"
       - "setup.py"
       - "LICENSE"
