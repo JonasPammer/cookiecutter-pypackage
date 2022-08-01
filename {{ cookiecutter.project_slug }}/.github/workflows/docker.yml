@@ -1,4 +1,4 @@
-name: Docker Image Scan / Build / README
+name: Docker Image Scan / Test / Tag, Build & Push / Sync README
 
 "on":
   push:
@@ -12,6 +12,7 @@ name: Docker Image Scan / Build / README
       - ".github/workflows/docker.yml"
       - ".dockerignore"
       - "Dockerfile"
+      - "docker_smoke_test.py"
       # as per .dockerignore:
       - "requirements.txt"
       - "setup.cfg"
@@ -55,9 +56,26 @@ jobs:
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
 
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v3
+
+      - name: set up qemu for docker
+        uses: docker/setup-qemu-action@v2
+
+      - name: set up docker buildx
+        uses: docker/setup-buildx-action@v2
+
+      # We've successfully built it, we've successfully statically scanned it,
+      # and now we run it
+      - name: Run Docker Smoke Test
+        run: python3 docker_smoke_test.py
+
   dockerhub:
     if: github.event_name != 'pull_request'
-    needs: trivy-security
+    needs: [trivy-security, smoke-test]
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
