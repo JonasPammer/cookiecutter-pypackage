@@ -72,6 +72,13 @@ jobs:
           SKIP=pip-compile pre-commit run --all-files --show-diff-on-failure
         working-directory: ./some-package
 
+      - name: Upload generated project as CI Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cookiecutter-pypackage-example
+          path: |
+            ./some-package
+
       ### COOKIECUTTER SPECIFIC STEPS ###
       ## TEST PyPy ##
       - name: set up python 3 (pypy)
