@@ -55,7 +55,7 @@ def main() -> int:
                     "docker",
                     "inspect",
                     docker_container_id,
-                    "--format={{.State.ExitCode}}",
+                    "--format={% raw %}{{.State.ExitCode}}{% endraw %}",
                 ]
             )
             .strip()
