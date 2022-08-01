@@ -110,6 +110,12 @@ jobs:
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
 
+      # We've successfully built it, we've successfully statically scanned it,
+      # and now we run it
+      - name: Run Docker Smoke Test
+        run: python3 docker_smoke_test.py
+        working-directory: ./some-package
+
   # as per ci.yml of actual cookie
   test:
     name: Run Tox, Coverage and Build on ${{ matrix.os }} with CPython ${{ matrix.python-version }} / ${{ matrix.pip-version }} pip
