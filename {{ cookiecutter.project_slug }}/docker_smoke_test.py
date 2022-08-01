@@ -35,7 +35,7 @@ def main() -> int:
     _print("Building local version of Docker Image...")
     check_call(
         "docker buildx build . "
-        "--tag {{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:smoke-please-ignore "
+        "--tag {{ cookiecutter.dockerhub_username.lower() }}/{{ cookiecutter.project_slug }}:smoke-please-ignore "
         "--load".split()
     )
 
@@ -45,7 +45,7 @@ def main() -> int:
     docker_container_id: str = (
         check_output(
             "docker run --detach --pull=never "
-            "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:smoke-please-ignore".split()
+            "{{ cookiecutter.dockerhub_username.lower() }}/{{ cookiecutter.project_slug }}:smoke-please-ignore".split()
         )
         .strip()
         .decode("utf-8")
