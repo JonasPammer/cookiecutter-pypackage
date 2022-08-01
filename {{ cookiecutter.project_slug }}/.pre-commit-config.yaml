@@ -72,21 +72,6 @@ repos:
       - id: mypy
         additional_dependencies: ["attrs>=21.0,<22", "types-PyYAML"] # as per setup.cfg
 
-  - repo: https://github.com/jazzband/pip-tools
-    rev: 6.8.0
-    hooks:
-      - id: pip-compile
-        name: pip-compile setup.cfg
-        files: ^(setup\.cfg|requirements\.txt)$
-      - id: pip-compile
-        name: pip-compile requirements-dev.in
-        args: [requirements-dev.in]
-        files: ^requirements-dev\.(in|txt)$
-      - id: pip-compile
-        name: pip-compile requirements-build.in
-        args: [requirements-build.in]
-        files: ^requirements-build\.(in|txt)$
-
   # the uncompromising (opinionated / barely configurable) PEP8 Python code formatter.
   - repo: https://github.com/psf/black
     rev: "22.3.0"
