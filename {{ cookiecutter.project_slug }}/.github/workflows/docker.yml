@@ -46,7 +46,7 @@ jobs:
           tags: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:local"
 
       - name: Run Trivy vulnerability scanner on built Image.
-        uses: aquasecurity/trivy-action@0.2.5
+        uses: aquasecurity/trivy-action@0.6.1
         with:
           image-ref: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}:local"
           format: table
