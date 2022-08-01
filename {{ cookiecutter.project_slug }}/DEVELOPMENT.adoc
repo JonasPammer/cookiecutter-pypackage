@@ -94,6 +94,13 @@ $ *tox -e pipmain*
 $ *tox -e py37-piplatest*
 ----
 
+In order to run the additional dockerfile smoke test
+simply execute the `docker_smoke_test.py` file as shown below:
+
+----
+$ python3 docker_smoke_test.py
+----
+
 [[versioning]]
 === 🔢 Versioning
 
