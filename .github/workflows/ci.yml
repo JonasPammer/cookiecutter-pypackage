@@ -78,6 +78,7 @@ jobs:
           name: cookiecutter-pypackage-example
           path: |
             ./some-package
+            !./some-package/project-venv
 
       ### COOKIECUTTER SPECIFIC STEPS ###
       ## TEST PyPy ##
