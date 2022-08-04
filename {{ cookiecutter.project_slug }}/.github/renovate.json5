@@ -30,7 +30,7 @@
   lockFileMaintenance: { enabled: true },
   stabilityDays: 7,
 
-  commitMessageTopic: "{{manager}} dependency {{depName}}",
+  commitMessageTopic: "{% raw %}{{manager}} dependency {{depName}}{% end %}",
   labels: ["kind/dependencies"],
   packageRules: [
     {
