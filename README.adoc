@@ -247,8 +247,8 @@ as it is assumed that the project is included in your `pre-commit.ci` account pr
 +
 [NOTE]
 ====
-To enable Renovate, you need to enable it for your repositories, e.g. by using the recommended 
-Way of installing the https://github.com/marketplace/renovate[Renovate GitHub App] 
+To enable Renovate, you need to enable it for your repositories, e.g. by using the recommended
+Way of installing the https://github.com/marketplace/renovate[Renovate GitHub App]
 to your GitHub profile (for free)!
 ====
 * Includes a GitHub Workflow to *declaratively manage labels*
