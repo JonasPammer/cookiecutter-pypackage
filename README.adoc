@@ -242,8 +242,14 @@ as it is assumed that the project is included in your `pre-commit.ci` account pr
 * Includes a GitHub *Pull Request Template*
 * Includes a Continuous GitHub Workflow to *automatically stale/close issues and PRs* that have had no activity (updates or comments) for 30/7 days respectively.
 * Includes a GitHub Workflow to denote size of pull requests by automagically labelling them
-* Includes a
-  https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates[Dependabot]
-  configuration file to check for updates of used GitHub Actions themselves on a monthly basis
+* Includes a pretty standard https://www.mend.io/free-developer-tools/renovate/[*Renovate*] configuration file
+  for dependency update automation (similiar to dependabot, but better).
++
+[NOTE]
+====
+To enable Renovate, you need to enable it for your repositories, e.g. by using the recommended 
+Way of installing the https://github.com/marketplace/renovate[Renovate GitHub App] 
+to your GitHub profile (for free)!
+====
 * Includes a GitHub Workflow to *declaratively manage labels*
 ** The predefined labels definition is inspired by the kubernetes project
