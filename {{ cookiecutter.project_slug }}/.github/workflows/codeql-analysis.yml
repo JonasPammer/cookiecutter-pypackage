@@ -24,10 +24,10 @@ jobs:
 
     steps:
       - name: check out the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
 
       - name: set up python in minimum required version
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@b55428b1882923874294fa556849718a1d7f2ca5 # tag=v4
         with:
           python-version: "3.7"
 
@@ -38,7 +38,7 @@ jobs:
           echo "CODEQL_PYTHON=$(which python)" >> $GITHUB_ENV
 
       - name: Initialize CodeQL.
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@2ca79b6fa8d3ec278944088b4aa5f46912db5d63 # tag=v2
         with:
           languages: python
           # https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#analyzing-python-dependencies
@@ -47,7 +47,7 @@ jobs:
       # Autobuild attempts to build any compiled languages (C/C++, C#, or Java).
       # If this step fails, then you should remove it and run the build manually.
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+        uses: github/codeql-action/autobuild@2ca79b6fa8d3ec278944088b4aa5f46912db5d63 # tag=v2
 
       - name: Perform CodeQL Analysis.
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@2ca79b6fa8d3ec278944088b4aa5f46912db5d63 # tag=v2
