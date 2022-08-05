@@ -32,7 +32,7 @@
   // EXTEND file match specifications
   "github-actions": {
     "fileMatch": ["(.*)(workflow-templates|\.github\/workflows)\/[^/]+\.ya?ml$"]
-  }
+  },
 
   commitMessageTopic: "{{manager}} dependency {{depName}}",
   labels: ["kind/dependencies"],
