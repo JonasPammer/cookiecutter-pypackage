@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@f4278025ab0f432ce369118909e46deec636f50c # tag=v3
         with:
           path: ~/.cache/pre-commit
-          key: {% raw %}${{ hashFiles('.pre-commit-config.yaml') }}{% endraw %}
+          key: "{% raw %}${{ hashFiles('.pre-commit-config.yaml') }}{% endraw %}"
 
       - name: install asciidoctor and other relevant ruby gems
         run: gem install --no-document asciidoctor asciidoctor-reducer rouge coderay
@@ -65,7 +65,7 @@ jobs:
       - name: Deploy HTML to GitHub Pages (when branch is master).
         uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305 # tag=v3
         with:
-          github_token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+          github_token: "{% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}"
           publish_branch: gh-pages
           publish_dir: ./docs/
         if: github.ref == 'refs/heads/master'

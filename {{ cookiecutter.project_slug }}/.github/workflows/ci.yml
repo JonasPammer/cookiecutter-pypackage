@@ -30,13 +30,13 @@ permissions:
 
 # Cancel running jobs when a pull request is updated
 concurrency:
-  group: {% raw %}${{ github.workflow }}{% endraw %}-{% raw %}${{ github.event.pull_request.number || github.sha }}{% endraw %}
+  group: "{% raw %}${{ github.workflow }}{% endraw %}-{% raw %}${{ github.event.pull_request.number || github.sha }}{% endraw %}"
   cancel-in-progress: true
 
 jobs:
   ci:
-    name: {% raw %}${{ matrix.os }}{% endraw %} / CPython {% raw %}${{ matrix.python-version }}{% endraw %} / {% raw %}${{ matrix.pip-version }}{% endraw %} pip
-    runs-on: {% raw %}${{ matrix.os }}{% endraw %}-latest
+    name: "{% raw %}${{ matrix.os }}{% endraw %} / CPython {% raw %}${{ matrix.python-version }}{% endraw %} / {% raw %}${{ matrix.pip-version }}{% endraw %} pip"
+    runs-on: "{% raw %}${{ matrix.os }}{% endraw %}-latest"
     permissions:
       pull-requests: write
     strategy:
@@ -73,13 +73,13 @@ jobs:
         uses: actions/setup-python@b55428b1882923874294fa556849718a1d7f2ca5 # tag=v4
         if: "!endsWith(matrix.python-version, '-dev')"
         with:
-          python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
+          python-version: "{% raw %}${{ matrix.python-version }}{% endraw %}"
 
       - name: set up python {% raw %}${{ matrix.python-version }}{% endraw %} using deadsnakes's action
         if: endsWith(matrix.python-version, '-dev')
         uses: deadsnakes/action@7ab8819e223c70d2bdedd692dfcea75824e0a617 # tag=v2.1.1
         with:
-          python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
+          python-version: "{% raw %}${{ matrix.python-version }}{% endraw %}"
 
       - name: log python version info ({% raw %}${{ matrix.python-version }}{% endraw %})
         run: python --version --version
@@ -92,7 +92,7 @@ jobs:
       - name: setup/activate pip cache
         uses: actions/cache@f4278025ab0f432ce369118909e46deec636f50c # tag=v3
         with:
-          path: {% raw %}${{ steps.pip-cache.outputs.dir }}{% endraw %}
+          path: "{% raw %}${{ steps.pip-cache.outputs.dir }}{% endraw %}"
           key: >-
             {% raw %}${{ runner.os }}{% endraw %}-pip-
             {% raw %}${{ hashFiles('setup.*') }}{% endraw %}-
@@ -119,11 +119,11 @@ jobs:
         uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378 # tag=v3
         with:
           file: ./coverage.xml
-          name: {% raw %}${{ runner.os }}{% endraw %}-{% raw %}${{ matrix.python-version }}{% endraw %}-{% raw %}${{ matrix.pip-version }}{% endraw %}
+          name: "{% raw %}${{ runner.os }}{% endraw %}-{% raw %}${{ matrix.python-version }}{% endraw %}-{% raw %}${{ matrix.pip-version }}{% endraw %}"
 
   pypy:
-    name: {% raw %}${{ matrix.os }}{% endraw %} / {% raw %}${{ matrix.python-version }}{% endraw %} / {% raw %}${{ matrix.pip-version }}{% endraw %} pip
-    runs-on: {% raw %}${{ matrix.os }}{% endraw %}-latest
+    name: "{% raw %}${{ matrix.os }}{% endraw %} / {% raw %}${{ matrix.python-version }}{% endraw %} / {% raw %}${{ matrix.pip-version }}{% endraw %} pip"
+    runs-on: "{% raw %}${{ matrix.os }}{% endraw %}-latest"
     strategy:
       fail-fast: false
       matrix:
@@ -146,7 +146,7 @@ jobs:
       - name: set up python {% raw %}${{ matrix.python-version }}{% endraw %}
         uses: actions/setup-python@b55428b1882923874294fa556849718a1d7f2ca5 # tag=v4
         with:
-          python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
+          python-version: "{% raw %}${{ matrix.python-version }}{% endraw %}"
 
       - name: install dependencies
         run: |

@@ -117,9 +117,9 @@ jobs:
         uses: docker/build-push-action@c84f38281176d4c9cdb1626ffafcd6b3911b5d94 # tag=v3
         with:
           context: .
-          push: {% raw %}${{ github.event_name != 'pull_request' }}{% endraw %}
-          tags: {% raw %}${{ steps.meta.outputs.tags }}{% endraw %}
-          labels: {% raw %}${{ steps.meta.outputs.labels }}{% endraw %}
+          push: "{% raw %}${{ github.event_name != 'pull_request' }}{% endraw %}"
+          tags: "{% raw %}${{ steps.meta.outputs.tags }}{% endraw %}"
+          labels: "{% raw %}${{ steps.meta.outputs.labels }}{% endraw %}"
 
   dockerhub-readme:
     if: github.event_name != 'pull_request'
