@@ -49,10 +49,10 @@ you need to re-run the install command (e.g. to register new cli scripts).
 ==== ℹ️ Updating pinned dependencies
 
 When you change the dependencies of the pypackage (in `setup.cfg`)
-or change one of the `requirements*.in` files you must run
-the appropriate commands to regenerate their `*.txt` counterparts.
+or change one of the `requirementspass:[*].in` files you must run
+the appropriate commands to regenerate their `pass:[*].txt` counterparts.
 The command to run is denoted in form of a comment
-at the top the respective `requirements*.txt` file, i.e.:
+at the top the respective `requirementspass:[*].txt` file, i.e.:
 
 [subs="+quotes,attributes"]
 ----
