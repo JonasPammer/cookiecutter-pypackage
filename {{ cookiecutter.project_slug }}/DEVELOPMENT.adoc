@@ -71,6 +71,7 @@ In order to run the testsuite locally you need to tell tox (the test runner)
 which environment (python version - pip version) you want to run
 as seen in the Examples below:
 
+[subs="+quotes,attributes"]
 ----
 # use default python 3 of system
 $ *tox -e py3*
