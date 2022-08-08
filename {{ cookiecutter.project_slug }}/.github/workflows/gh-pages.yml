@@ -1,14 +1,17 @@
----
 name: build self-contained READMEs
-permissions:
-  pages: write
-  contents: write
+
 "on":
   push:
+
+permissions:
+  contents: read
 
 jobs:
   gh-pages:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
     steps:
       - name: check out the codebase
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -54,6 +57,7 @@ jobs:
           commit_message: "docs: reduce README.orig.adoc \n {% raw %}${{ github.event.head_commit.message }}{% endraw %}"
           file_pattern: README.adoc README.md
           disable_globbing: true
+        
 
       - name: Generate HTML
         run: asciidoctor --backend=html5 --destination-dir docs --out-file index.html README.adoc

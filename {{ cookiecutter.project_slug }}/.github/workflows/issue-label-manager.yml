@@ -1,8 +1,6 @@
 ---
 name: create declared labels
-permissions:
-  issues: write
-  pull-requests: write
+
 "on":
   issues:
   push:
@@ -12,9 +10,15 @@ permissions:
       - ".github/workflows/issue-label-manager.yml"
       - ".github/labels.yml"
 
+permissions:
+  contents: read
+
 jobs:
   labels:
     name: Invoke issue-label-manager action
+    permissions:
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3

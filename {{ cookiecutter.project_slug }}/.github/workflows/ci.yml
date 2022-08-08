@@ -1,6 +1,6 @@
 ---
 name: Run Tox and Coverage
-permissions: read-all
+
 "on":
   workflow_dispatch:
   pull_request:
@@ -24,6 +24,9 @@ permissions: read-all
   schedule:
     # At 05:00 on Sunday.
     - cron: "0 5 * * 0"
+
+permissions:
+  contents: read
 
 # Cancel running jobs when a pull request is updated
 concurrency:

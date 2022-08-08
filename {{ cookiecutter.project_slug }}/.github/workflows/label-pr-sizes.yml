@@ -1,14 +1,18 @@
 ---
 name: label size of PRs
-permissions:
-  pull-requests: write
+
 "on":
   pull_request_target:
     types: [opened, reopened, synchronize]
 
+permissions:
+  contents: read
+
 jobs:
   size-label:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: size-label
         uses: "pascalgn/size-label-action@1619680c5ac1ef360b944bb56a57587ba4aa2af8" # tag=v0.4.3

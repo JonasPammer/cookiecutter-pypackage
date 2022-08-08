@@ -24,6 +24,9 @@ name: Docker Image Scan / Test / Tag, Build & Push / Sync README
       - "main"
       - "master"
 
+permissions:
+  contents: read
+
 jobs:
   trivy-security:
     runs-on: ubuntu-latest
