@@ -58,7 +58,6 @@ jobs:
           file_pattern: README.adoc README.md
           disable_globbing: true
 
-
       - name: Generate HTML
         run: asciidoctor --backend=html5 --destination-dir docs --out-file index.html README.adoc
 
