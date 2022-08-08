@@ -64,17 +64,17 @@ jobs:
       TOX_PARALLEL_NO_SPINNER: 1
     steps:
       - name: check out the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
 
       - name: set up python {% raw %}${{ matrix.python-version }}{% endraw %} using github's action
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@98f2ad02fd48d057ee3b4d4f66525b231c3e52b6 # tag=v3
         if: "!endsWith(matrix.python-version, '-dev')"
         with:
           python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
 
       - name: set up python {% raw %}${{ matrix.python-version }}{% endraw %} using deadsnakes's action
         if: endsWith(matrix.python-version, '-dev')
-        uses: deadsnakes/action@v2.1.1
+        uses: deadsnakes/action@7ab8819e223c70d2bdedd692dfcea75824e0a617 # tag=v2.1.1
         with:
           python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
 
@@ -87,7 +87,7 @@ jobs:
           echo "::set-output name=dir::$(pip cache dir)"
 
       - name: setup/activate pip cache
-        uses: actions/cache@v3
+        uses: actions/cache@f4278025ab0f432ce369118909e46deec636f50c # tag=v3
         with:
           path: {% raw %}${{ steps.pip-cache.outputs.dir }}{% endraw %}
           key: >-
@@ -113,7 +113,7 @@ jobs:
         run: .tox/pip{% raw %}${{ matrix.pip-version }}{% endraw %}/{% raw %}${{ matrix.os == 'Windows' && 'Scripts' || 'bin' }}{% endraw %}/coverage xml -o coverage.xml
 
       - name: Upload coverage to Codecov and add Pull Request comment
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@81cd2dc8148241f03f5839d295e000b8f761e378 # tag=v3
         with:
           file: ./coverage.xml
           name: {% raw %}${{ runner.os }}{% endraw %}-{% raw %}${{ matrix.python-version }}{% endraw %}-{% raw %}${{ matrix.pip-version }}{% endraw %}
@@ -138,10 +138,10 @@ jobs:
       TOX_PARALLEL_NO_SPINNER: 1
     steps:
       - name: check out the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
 
       - name: set up python {% raw %}${{ matrix.python-version }}{% endraw %}
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@98f2ad02fd48d057ee3b4d4f66525b231c3e52b6 # tag=v3
         with:
           python-version: {% raw %}${{ matrix.python-version }}{% endraw %}
 
