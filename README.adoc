@@ -204,9 +204,13 @@ To do so, go to the _Settings_ page of your GitHub repository. Under _Pages / So
 =====
 ====
 * Includes a Beginner-Friendly Development Documentation file
-* Includes a Beginner-Friendly Contribution Documentation file, inspired by
+* Includes a Beginner-Friendly generic Contribution Documentation file, inspired by
   https://github.com/auth0/open-source-template/blob/master/GENERAL-CONTRIBUTING.md[Auth0's Open Source Template].
 * Includes ability to select and generate any of the Licenses found on https://choosealicense.com/licenses/.
+* Includes a generic security policy file that states that 
+  only the current major version of the project is actively supported with patches and that
+  problems should be sent to the e-mail address specified when the cookiecutter was created.
+  The file also contains a template that may be used for such inqueries.
 
 === Development
 
