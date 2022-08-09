@@ -16,9 +16,9 @@ endif::[]
 
 // Very Relevant Status Badges
 https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/ci.yml/badge.svg[CI Status]]
+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/codeql-analysis.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/codeql-analysis.yml/badge.svg[CodeQL Status]]
 image:https://img.shields.io/pypi/pyversions/{{ cookiecutter.pkg_name }}.svg[Python Versions]
-// Replace with real one once https://github.com/ossf/scorecard/issues/271 is implemented
-https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/security/code-scanning[image:https://img.shields.io/badge/repo_security_checked_by-openssf_scorecard-lightgreen.svg?style=flat-square[project analyzed with openssf scorecard project]]
+
 
 A Python Package to {{ cookiecutter.project_short_description }}.
 
