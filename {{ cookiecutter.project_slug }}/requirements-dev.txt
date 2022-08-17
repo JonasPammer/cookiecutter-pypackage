@@ -6,7 +6,7 @@
 #
 arrow==1.2.2
     # via jinja2-time
-attrs==21.4.0
+attrs==22.1.0
     # via pytest
 binaryornot==0.4.4
     # via cookiecutter
@@ -28,19 +28,19 @@ click==8.1.3
     #   cruft
     #   pip-tools
     #   typer
-cookiecutter==1.7.3
+cookiecutter==2.1.1
     # via cruft
 covdefaults==2.2.0
     # via -r requirements-dev.in
-coverage==6.4.2
+coverage==6.4.4
     # via
     #   -r requirements-dev.in
     #   covdefaults
-cruft==2.10.2
+cruft==2.11.0
     # via -r requirements-dev.in
 distlib==0.3.5
     # via virtualenv
-filelock==3.7.1
+filelock==3.8.0
     # via
     #   tox
     #   virtualenv
@@ -48,7 +48,7 @@ gitdb==4.0.9
     # via gitpython
 gitpython==3.1.27
     # via cruft
-identify==2.5.2
+identify==2.5.3
     # via pre-commit
 idna==3.3
     # via requests
@@ -79,8 +79,6 @@ pluggy==1.0.0
     # via
     #   pytest
     #   tox
-poyo==0.5.0
-    # via cookiecutter
 pre-commit==2.20.0
     # via -r requirements-dev.in
 py==1.11.0
@@ -100,15 +98,15 @@ python-dateutil==2.8.2
 python-slugify==6.1.2
     # via cookiecutter
 pyyaml==6.0
-    # via pre-commit
+    # via
+    #   cookiecutter
+    #   pre-commit
 requests==2.28.1
     # via cookiecutter
 six==1.16.0
     # via
-    #   cookiecutter
     #   python-dateutil
     #   tox
-    #   virtualenv
 smmap==5.0.0
     # via gitdb
 text-unidecode==1.3
@@ -124,11 +122,11 @@ tomli==2.0.1
     #   pytest
 tox==3.25.1
     # via -r requirements-dev.in
-typer==0.4.2
+typer==0.6.1
     # via cruft
-urllib3==1.26.10
+urllib3==1.26.11
     # via requests
-virtualenv==20.15.1
+virtualenv==20.16.3
     # via
     #   pre-commit
     #   tox
