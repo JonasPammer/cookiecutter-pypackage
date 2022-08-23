@@ -2,14 +2,13 @@
 # This workflow warns and then closes issues and PRs that have had no activity (updates/comments) for a specified amount of time.
 # https://github.com/actions/stale
 name: mark stale issues and pull requests
-
+permissions:
+  issues: write
+  pull-requests: write
 "on":
   schedule:
     # At 03:31.
     - cron: "31 3 * * *"
-
-permissions:
-  contents: read
 
 jobs:
   stale:
@@ -24,8 +23,9 @@ jobs:
           repo-token: "{% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}"
           days-before-stale: 30 # default: 60
           days-before-close: 7 # default: 7
-          only-labels: "question" # Stale/Close only issues that have been looked at and tagged with this github defaultly-created tag
-          exempt-assignees: "{{ cookiecutter.github_username }}"
+          exempt-issue-labels: triage/accepted,priority/high,lgtm
+          exempt-pr-labels: triage/accepted,priority/high,lgtm
+          exempt-assignees: "{{ cookiecutter.github_username }},renovate"
 
           stale-issue-message:
             "This issue has been marked 'stale' due to lack of recent activity.
