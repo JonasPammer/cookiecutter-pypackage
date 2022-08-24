@@ -1,8 +1,6 @@
 ---
 name: create declared labels
-permissions:
-  issues: write
-  pull-requests: write
+
 "on":
   issues:
   push:
@@ -11,6 +9,11 @@ permissions:
     paths:
       - ".github/workflows/issue-label-manager.yml"
       - ".github/labels.yml"
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
 
 jobs:
   labels:

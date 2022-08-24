@@ -1,5 +1,5 @@
 name: CI
-permissions: read-all
+
 "on":
   pull_request:
   push:
@@ -11,6 +11,8 @@ permissions: read-all
       - "{{ cookiecutter.project_slug }}/**"
       - "cookiecutter.json"
       - "requirements-dev.txt"
+
+permissions: read-all
 
 # Cancel running jobs when a pull request is updated
 concurrency:
