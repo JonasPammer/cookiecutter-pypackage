@@ -18,7 +18,7 @@ RUN apt-get -qy update \
     && apt-get -qy install --no-install-recommends apt-utils tini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Create non-root user for security purposes 
+# Create non-root user for security purposes
 # (https://github.com/hexops/dockerfile#run-as-a-non-root-user)
 RUN if [ "${DOCKER_APP_USER}" != "root" ]; then \
         addgroup --gid 10001 --system "${DOCKER_APP_USER}" \
