@@ -13,6 +13,7 @@ name: Docker Image Scan / Test / Tag, Build & Push / Sync README
       - ".dockerignore"
       - "Dockerfile"
       - "docker_smoke_test.py"
+      - "README_DOCKER.adoc"
       # as per .dockerignore:
       - "requirements.txt"
       - "setup.cfg"
