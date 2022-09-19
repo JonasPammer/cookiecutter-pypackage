@@ -148,7 +148,7 @@ jobs:
 
       # https://github.com/docker/build-push-action/issues/21
       - name: Sync README.md to DockerHub.
-        uses: peter-evans/dockerhub-description@836d7e6aa8f6f32dce26f5a1dd46d3dc24997eae # tag=v3
+        uses: peter-evans/dockerhub-description@da890086d39c735e41d8823c8a95bde4302c3d64 # tag=v3
         with:
           username: "{{ cookiecutter.dockerhub_username }}"
           password: "{% raw %}${{ secrets.DOCKERHUB_PASSWORD }}{% endraw %}"
