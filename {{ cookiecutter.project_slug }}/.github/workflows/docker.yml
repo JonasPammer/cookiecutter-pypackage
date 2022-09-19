@@ -123,7 +123,7 @@ jobs:
           labels: "{% raw %}${{ steps.meta.outputs.labels }}{% endraw %}"
 
   dockerhub-readme:
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     needs: dockerhub
     runs-on: ubuntu-latest
     steps:
