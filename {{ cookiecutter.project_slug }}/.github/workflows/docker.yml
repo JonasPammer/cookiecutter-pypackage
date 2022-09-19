@@ -153,4 +153,4 @@ jobs:
           username: "{{ cookiecutter.dockerhub_username }}"
           password: "{% raw %}${{ secrets.DOCKERHUB_PASSWORD }}{% endraw %}"
           repository: "{{ cookiecutter.dockerhub_username }}/{{ cookiecutter.project_slug }}"
-          short-description: ${{ github.event.repository.description }}
+          short-description: "{% raw %}${{ github.event.repository.description }}{% raw %}""
