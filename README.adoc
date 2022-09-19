@@ -41,7 +41,7 @@ toc::[]
 ---
 
 * Continuous Integration with https://github.com/features/actions[GitHub Actions]
-  for on MacOS, Window and Ubuntu.
+  on MacOS, Window and Ubuntu.
   Testing Matrix includes CPython 3.7/3.8/3.9/3.10/3.11 as well as PyPy 3.7 with
   previous (21.*), latest (upgradeable) and main (devel) version of pip for each OS -
   resulting in 26~ Jobs
@@ -53,7 +53,10 @@ toc::[]
 ---
 
 * Assumes Minimum Python Version of 3.7
-* Command line interface using argparse or Click (optional)
+* Offers command line interface using argparse or Click (optional)
+
+---
+
 * Automatic build-and-release to https://pypi.org/[PyPI] when pushing a new tag to master
 * Deployment / Execution ready through Dockerfile that follows all best-practices
   (https://github.com/hexops/dockerfile/tree/aed47f5b4c7a923510e57019d3e4f0ee80006d78[1],
