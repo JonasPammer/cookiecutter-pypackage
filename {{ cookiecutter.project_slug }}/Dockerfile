@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM python:3.10-slim-bullseye@sha256:2124d4f8ccbd537500de16660a876263949ed9a9627cfb6141f418d36f008e9e
+FROM python:3.10-slim-bullseye@sha256:6de22c9cf887098265b7614582b00641c0c8c6735af538d0f267d6bb457634f1
 LABEL maintainer="{{ cookiecutter.email }}"
 LABEL org.opencontainers.source="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
