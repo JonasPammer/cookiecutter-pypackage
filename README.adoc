@@ -248,7 +248,6 @@ as it is assumed that the project is included in your `pre-commit.ci` account pr
 * Includes a `.gitattributes` file, ensuring LF line endings
 * Includes GitHub *Issue Form Templates* for filing bug reports and feature requests using HTML forms
 * Includes a GitHub *Pull Request Template*
-* Includes a Continuous GitHub Workflow to *automatically stale/close issues and PRs* that have had no activity (updates or comments) for 30/7 days respectively.
 * Includes a GitHub Workflow to denote size of pull requests by automagically labelling them
 * Includes a pretty standard https://www.mend.io/free-developer-tools/renovate/[*Renovate*] configuration file
   for dependency update automation (similiar to dependabot, but better).
