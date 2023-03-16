@@ -172,6 +172,21 @@ It contains all relevant Development Documentation.
 
 Awesome, right?
 
+[[post-setup]]
+=== Necessary manual post-setup steps
+
+[subs="+quotes,attributes"]
+----
+$ *python3 -m venv venv*
+$ *source venv/bin/activate*
+(venv)$ *python3 -m pip install -r requirements-dev.txt*
+(venv)$ *pip-compile --generate-hashes*
+(venv)$ *pip-compile requirements-dev.in*
+(venv)$ *pip-compile requirements-build.in*
+----
+
+[[post-setup-github]]
+==== GitHub
 [NOTE]
 This CookieCutter does not configure your GitHub Repository.
 Please read the notes found in this README and perform the documented manual steps
