@@ -61,7 +61,7 @@ jobs:
       # trivia: https://github.com/JonasPammer/cookiecutter-pypackage/issues/91
       - name: run pip-compile commands in generated project
         run: |
-          source cookiecutter-venv/bin/activate
+          source ../cookiecutter-venv/bin/activate
           pip-compile --generate-hashes
           pip-compile requirements-dev.in
           pip-compile requirements-build.in
