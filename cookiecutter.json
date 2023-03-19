@@ -14,6 +14,7 @@
     "GNU APGLv3",
     "Not open source"
   ],
+  "use_renovate": true,
 
   "project_name": null,
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
