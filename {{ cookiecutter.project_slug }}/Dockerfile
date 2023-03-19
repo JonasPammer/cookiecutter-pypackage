@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM python:3.10-slim-bullseye
+FROM python:3.11-slim-bullseye
 LABEL maintainer="{{ cookiecutter.email }}"
 LABEL org.opencontainers.source="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 
@@ -32,7 +32,7 @@ ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 RUN apt-get -qy update \
     && apt-get -qqy install --no-install-recommends python3-wheel \
     && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir wheel \
+    && python3 -m pip install --no-cache-dir --upgrade setuptools wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN chown -R "${DOCKER_APP_USER}:${DOCKER_APP_USER}" /app
