@@ -38,13 +38,13 @@ jobs:
           python-version: "3.7"
 
       - name: setup/activate pre-commit cache
-        uses: actions/cache@1c73980b09e7aea7201f325a7aa3ad00beddcdda # tag=v3
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         with:
           path: ~/.cache/pre-commit
           key: ${{ hashFiles('**/.pre-commit-config.yaml') }}
 
       - name: setup/activate cookiecutter-venv cache
-        uses: actions/cache@1c73980b09e7aea7201f325a7aa3ad00beddcdda # tag=v3
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         with:
           path: cookiecutter-venv
           key: ${{ hashFiles('requirements-dev.txt') }}
@@ -185,7 +185,7 @@ jobs:
           echo "::set-output name=dir::$(pip cache dir)"
 
       - name: setup/activate pip cache
-        uses: actions/cache@1c73980b09e7aea7201f325a7aa3ad00beddcdda # tag=v3
+        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: >-
