@@ -56,9 +56,9 @@ at the top the respective `requirementspass:[*].txt` file, i.e.:
 
 [subs="+quotes,attributes"]
 ----
-(venv)$ *pip-compile --generate-hashes*
-(venv)$ *pip-compile requirements-dev.in*
-(venv)$ *pip-compile requirements-build.in*
+(venv)$ *pip-compile --resolver=backtracking --generate-hashes*
+(venv)$ *pip-compile --resolver=backtracking requirements-dev.in*
+(venv)$ *pip-compile --resolver=backtracking requirements-build.in*
 ----
 
 [[testing]]

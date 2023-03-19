@@ -35,7 +35,7 @@ jobs:
       - name: set up python 3
         uses: actions/setup-python@b55428b1882923874294fa556849718a1d7f2ca5 # tag=v4
         with:
-          python-version: "3.x"
+          python-version: "3.7"
 
       - name: setup/activate pre-commit cache
         uses: actions/cache@1c73980b09e7aea7201f325a7aa3ad00beddcdda # tag=v3
@@ -58,6 +58,15 @@ jobs:
         run: |
           source cookiecutter-venv/bin/activate
           cookiecutter . --config-file .github/cookiecutter-example.yml --no-input
+      # trivia: https://github.com/JonasPammer/cookiecutter-pypackage/issues/91
+      - name: run pip-compile commands in generated project
+        run: |
+          source ../cookiecutter-venv/bin/activate
+          pip-compile --resolver=backtracking --generate-hashes
+          pip-compile --resolver=backtracking requirements-dev.in
+          pip-compile --resolver=backtracking requirements-build.in
+        working-directory: ./some-package
+
       - name: install dependencies of generated project
         run: |
           python3 -m venv project-venv
@@ -182,12 +191,20 @@ jobs:
           key: >-
             ${{ runner.os }}-pip-
             ${{ hashFiles('*/setup.*') }}-
-            ${{ hashFiles('*/requirements*.txt') }}-
+            ${{ hashFiles('*/requirements*') }}-
             ${{ hashFiles('*/tox.ini') }}-
             ${{ hashFiles('*/.pre-commit-config.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
+
+      # trivia: https://github.com/JonasPammer/cookiecutter-pypackage/issues/91
+      - name: run pip-compile commands in generated project
+        run: |
+          pip-compile --resolver=backtracking --generate-hashes
+          pip-compile --resolver=backtracking requirements-dev.in
+          pip-compile --resolver=backtracking requirements-build.in
+        working-directory: ./some-package
 
       - name: install dependencies of generated project
         run: |

@@ -2,7 +2,9 @@ bump2version
 covdefaults
 coverage
 cruft
-pip-tools
+# https://github.com/jazzband/pip-tools/releases/tag/6.11.0 upped minimum pip version from >= 21.2 to >= 22.2
+# this makes `tox -e pipprevious` fail (which currently is used to test `21.3.*`)
+pip-tools<6.11.0
 pre-commit
 pytest
 pytest-env
