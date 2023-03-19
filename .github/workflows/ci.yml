@@ -58,6 +58,15 @@ jobs:
         run: |
           source cookiecutter-venv/bin/activate
           cookiecutter . --config-file .github/cookiecutter-example.yml --no-input
+      # trivia: https://github.com/JonasPammer/cookiecutter-pypackage/issues/91
+      - name: run pip-compile commands in generated project
+        run: |
+          source cookiecutter-venv/bin/activate
+          pip-compile --generate-hashes
+          pip-compile requirements-dev.in
+          pip-compile requirements-build.in
+        working-directory: ./some-package
+
       - name: install dependencies of generated project
         run: |
           python3 -m venv project-venv
