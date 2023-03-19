@@ -1,5 +1,6 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  ignorePaths: ["{{ cookiecutter.project_slug }}/"],
   extends: [
     // explicit version of "config:base" from https://docs.renovatebot.com/presets-config
     ":dependencyDashboard",
@@ -29,10 +30,6 @@
   configMigration: true,
   lockFileMaintenance: { enabled: true },
   stabilityDays: 7,
-  // EXTEND file match specifications
-  "github-actions": {
-    "fileMatch": ["(.*)(workflow-templates|\.github\/workflows)\/[^/]+\.ya?ml$"]
-  },
 
   commitMessageTopic: "{{manager}} dependency {{depName}}",
   labels: ["kind/dependencies"],
