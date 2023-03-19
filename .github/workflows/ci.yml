@@ -62,9 +62,9 @@ jobs:
       - name: run pip-compile commands in generated project
         run: |
           source ../cookiecutter-venv/bin/activate
-          pip-compile --generate-hashes
-          pip-compile requirements-dev.in
-          pip-compile requirements-build.in
+          pip-compile --resolver=backtracking --generate-hashes
+          pip-compile --resolver=backtracking requirements-dev.in
+          pip-compile --resolver=backtracking requirements-build.in
         working-directory: ./some-package
 
       - name: install dependencies of generated project

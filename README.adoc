@@ -180,9 +180,9 @@ Awesome, right?
 $ *python3 -m venv venv*
 $ *source venv/bin/activate*
 (venv)$ *python3 -m pip install -r requirements-dev.txt*
-(venv)$ *pip-compile --generate-hashes*
-(venv)$ *pip-compile requirements-dev.in*
-(venv)$ *pip-compile requirements-build.in*
+(venv)$ *pip-compile --resolver=backtracking --generate-hashes*
+(venv)$ *pip-compile --resolver=backtracking requirements-dev.in*
+(venv)$ *pip-compile --resolver=backtracking requirements-build.in*
 ----
 
 [[post-setup-github]]
