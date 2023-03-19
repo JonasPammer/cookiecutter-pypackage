@@ -1,5 +1,11 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
+{%- if cookiecutter.use_renovate == 'y' %}
+  enabled: true,
+{%- else %}
+  // renovation handled by cookiecutter and https://github.com/{{ cookiecutter.github_username }}/ansible-roles script
+  enabled: false,
+{%- endif %}
   extends: [
     // explicit version of "config:base" from https://docs.renovatebot.com/presets-config
     ":dependencyDashboard",
