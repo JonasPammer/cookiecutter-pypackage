@@ -191,12 +191,20 @@ jobs:
           key: >-
             ${{ runner.os }}-pip-
             ${{ hashFiles('*/setup.*') }}-
-            ${{ hashFiles('*/requirements*.txt') }}-
+            ${{ hashFiles('*/requirements*') }}-
             ${{ hashFiles('*/tox.ini') }}-
             ${{ hashFiles('*/.pre-commit-config.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
+
+      # trivia: https://github.com/JonasPammer/cookiecutter-pypackage/issues/91
+      - name: run pip-compile commands in generated project
+        run: |
+          pip-compile --resolver=backtracking --generate-hashes
+          pip-compile --resolver=backtracking requirements-dev.in
+          pip-compile --resolver=backtracking requirements-build.in
+        working-directory: ./some-package
 
       - name: install dependencies of generated project
         run: |
