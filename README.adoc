@@ -20,6 +20,8 @@ https://bestpractices.coreinfrastructure.org/projects/6343[image:https://bestpra
 
 Awesome https://github.com/cookiecutter/cookiecutter[Cookiecutter] template for creating Python Packages.
 
+https://github.com/JonasPammer/cookiecutter-pypackage-test[Example]
+
 toc::[]
 
 
