@@ -3,7 +3,6 @@
 {%- if cookiecutter.use_renovate == 'y' %}
   enabled: true,
 {%- else %}
-  // renovation handled by cookiecutter and https://github.com/{{ cookiecutter.github_username }}/ansible-roles script
   enabled: false,
 {%- endif %}
   extends: [
