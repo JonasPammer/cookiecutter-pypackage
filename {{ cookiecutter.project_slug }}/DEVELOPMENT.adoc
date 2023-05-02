@@ -126,7 +126,7 @@ $ *bump2version major*
 
 This tool automatically updates the version string in the required files
 and creates a generic commit with a matching tag
-(as configured in `.bumpversion.cf`).
+(as configured in `.bumpversion.cfg`).
 
 [NOTE]
 ====
