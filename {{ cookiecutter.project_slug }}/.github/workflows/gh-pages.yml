@@ -14,6 +14,7 @@ jobs:
       contents: write
       pages: write
     steps:
+      ### Setup
       - name: check out the codebase
         uses: actions/checkout@v3
 
@@ -36,6 +37,14 @@ jobs:
       - name: install asciidoctor and other relevant ruby gems
         run: gem install --no-document asciidoctor asciidoctor-reducer rouge coderay
 
+      - name: get first line of commit message as variable
+        shell: bash
+        run: |
+          echo "FIRST_LINE_OF_HEAD_COMMIT_MESSAGE=${HEAD_COMMIT_MESSAGE}" | head -1 >> $GITHUB_ENV
+        env:
+          HEAD_COMMIT_MESSAGE: "{% raw %}${{ github.event.head_commit.message }}{% endraw %}"
+
+      ### README.orig.adoc & co.
       - name: Generate README.adoc using ascidoctor-reducer.
         run: asciidoctor-reducer README.orig.adoc -o README.adoc
 
@@ -47,26 +56,30 @@ jobs:
         with:
           args: "-f docbook -t markdown_strict README.xml -o README.md --wrap=none"
 
-      - name: pre-commit README.md
+      ### SECURITY.adoc
+      - name: generate SECURITY.xml from SECURITY.adoc using ascidoctor
+        run: asciidoctor -b docbook SECURITY.adoc
+
+      - name: Generate SECURITY.md from SECURITY.xml using pandoc
+        uses: docker://pandoc/core:3.1
+        with:
+          args: "-f docbook -t markdown_strict SECURITY.xml -o SECURITY.md --wrap=none"
+
+      ### Commit
+      - name: pre-commit generated .md files
         run: |
           python3 -m pip install pre-commit
-          pre-commit run --files README.md || true
-          pre-commit run --files README.md || true
+          pre-commit run --files README.md SECURITY.md || true
+          pre-commit run --files README.md SECURITY.md || true
 
-      - name: get first line of commit message as variable to be used in next step
-        shell: bash
-        run: |
-          echo "FIRST_LINE_OF_HEAD_COMMIT_MESSAGE=${HEAD_COMMIT_MESSAGE}" | head -1 >> $GITHUB_ENV
-        env:
-          HEAD_COMMIT_MESSAGE: "{% raw %}${{ github.event.head_commit.message }}{% endraw %}"
-
-      - name: Commit generated READMEs.
+      - name: Commit generated files.
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "{% raw %}${{ env.FIRST_LINE_OF_HEAD_COMMIT_MESSAGE }}{% endraw %}\n{% raw %}${{ github.sha }}{% endraw %}"
-          file_pattern: README.adoc README.md
+          file_pattern: README.adoc README.md SECURITY.md
           disable_globbing: true
 
+      ### Deploy README.adoc
       - name: Generate HTML
         run: asciidoctor --backend=html5 --destination-dir docs --out-file index.html README.adoc
 
