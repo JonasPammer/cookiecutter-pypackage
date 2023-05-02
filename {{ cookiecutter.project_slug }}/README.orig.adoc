@@ -63,12 +63,18 @@ $ {{ cookiecutter.pkg_name }} *[--help]*
 // ...
 
 
-== Extra: Run using Docker
+== 🐳 Extra: Run using Docker
 https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml[image:https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions/workflows/docker.yml/badge.svg[Docker Workflow Status]]
 
 This Project also offers a best-practiced Dockerfile to run this package in an ensured-to-be-working environment:
 
 Details in link:README_DOCKER.adoc[README_DOCKER].
+
+
+[[security]]
+== 🛃 Security Policy
+
+include::SECURITY.adoc[]
 
 
 [[development]]
