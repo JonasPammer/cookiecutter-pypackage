@@ -35,6 +35,9 @@
   lockFileMaintenance: { enabled: true },
   stabilityDays: 7,
 
+  // https://github.com/JonasPammer/ansible-roles/issues/46
+  ignorePaths: ["requirements*.txt", "setup.cfg"],
+
   commitMessageTopic: "{% raw %}{{manager}} dependency {{depName}}{% endraw %}",
   labels: ["kind/dependencies"],
   packageRules: [
