@@ -1,3 +1,4 @@
+---
 name: Docker Image Scan / Test / Tag, Build & Push / Sync README
 
 "on":
