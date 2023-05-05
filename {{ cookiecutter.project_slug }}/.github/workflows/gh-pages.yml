@@ -7,6 +7,11 @@ name: build self-contained READMEs
 permissions:
   contents: read
 
+# Cancel a currently running workflow from the same PR, branch or tag when a new workflow is triggered for it
+concurrency:
+  group: "{% raw %}${{ github.workflow }}{% endraw %}-{% raw %}${{ github.event.pull_request.number || github.ref }}{% endraw %}"
+  cancel-in-progress: true
+
 jobs:
   gh-pages:
     runs-on: ubuntu-latest
