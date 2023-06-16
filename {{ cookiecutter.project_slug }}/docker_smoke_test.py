@@ -1,5 +1,4 @@
-"""Pure, Dependency-Free Python3 File to 'Smoke Test' running the Docker
-Container.
+"""Dependency-Free Python3 Script to 'Smoke Test' running the Docker Container.
 
 https://pythonspeed.com/articles/test-your-docker-build/
 """
