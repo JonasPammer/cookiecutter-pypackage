@@ -9,12 +9,18 @@ ARG VIRTUAL_ENV=/app/venv
 ### General Python Debian Docker Best-Practice Preperation Steps ###
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONDONTWRITEBYTECODE=1
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -qy update \
     && apt-get -qy upgrade \
     && apt-get -qy install --no-install-recommends apt-utils tini \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+RUN apt-get -qy update \
+    && apt-get -qqy install --no-install-recommends python3-wheel \
+    && python3 -m pip install --no-cache-dir --upgrade pip \
+    && python3 -m pip install --no-cache-dir --upgrade setuptools wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user for security purposes
@@ -27,12 +33,6 @@ RUN if [ "${DOCKER_APP_USER}" != "root" ]; then \
 ENV VIRTUAL_ENV=${VIRTUAL_ENV}
 RUN python3 -m venv "${VIRTUAL_ENV}"
 ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
-
-RUN apt-get -qy update \
-    && apt-get -qqy install --no-install-recommends python3-wheel \
-    && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir --upgrade setuptools wheel \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN chown -R "${DOCKER_APP_USER}:${DOCKER_APP_USER}" /app
 USER ${DOCKER_APP_USER}
