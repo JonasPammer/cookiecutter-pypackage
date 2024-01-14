@@ -10,13 +10,13 @@ ARG VIRTUAL_ENV=/app/venv
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 RUN apt-get -qy update \
     && apt-get -qy upgrade \
     && apt-get -qy install --no-install-recommends apt-utils tini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONDONTWRITEBYTECODE=1
 RUN apt-get -qy update \
     && apt-get -qqy install --no-install-recommends python3-wheel \
     && python3 -m pip install --no-cache-dir --upgrade pip \
