@@ -137,7 +137,7 @@ jobs:
 
   # as per ci.yml of actual cookie
   test:
-    name: Run Tox, Coverage and Build on ${{ matrix.os }} with CPython ${{ matrix.python-version }} / ${{ matrix.pip-version }} pip
+    name: ${{ matrix.os }} / CPython ${{ matrix.python-version }} / ${{ matrix.pip-version }} pip (Tox, Coverage and Build)
     runs-on: ${{ matrix.os }}-latest
 
     strategy:
