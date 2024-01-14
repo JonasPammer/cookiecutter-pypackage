@@ -46,11 +46,11 @@ WORKDIR /app
 
 COPY --chown="${DOCKER_APP_USER}:${DOCKER_APP_USER}" requirements.txt .
 USER ${DOCKER_APP_USER}
-RUN python3 -m pip install -r requirements.txt --require-hashes
+RUN python3 -m pip install --no-cache-dir -r requirements.txt --require-hashes
 
 COPY --chown="${DOCKER_APP_USER}:${DOCKER_APP_USER}" . .
 USER ${DOCKER_APP_USER}
-RUN python3 -m pip install .
+RUN python3 -m pip install --no-cache-dir  .
 
 
 ### Configure Container Startup Configuration ###
