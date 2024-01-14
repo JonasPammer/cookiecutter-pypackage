@@ -9,15 +9,14 @@ ARG VIRTUAL_ENV=/app/venv
 ### General Python Debian Docker Best-Practice Preperation Steps ###
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
-ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
-RUN apt-get -qy update \
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get -qy update \
     && apt-get -qy upgrade \
-    && apt-get -qy install --no-install-recommends apt-utils tini \
+    && apt-get -qy install --no-install-recommends tini \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get -qy update \
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get -qy update \
     && apt-get -qqy install --no-install-recommends python3-wheel \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir --upgrade setuptools \
