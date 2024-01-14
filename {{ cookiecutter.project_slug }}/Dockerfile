@@ -20,7 +20,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 RUN apt-get -qy update \
     && apt-get -qqy install --no-install-recommends python3-wheel \
     && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir --upgrade setuptools wheel \
+    && python3 -m pip install --no-cache-dir --upgrade setuptools \
+    && python3 -m pip install --no-cache-dir --upgrade wheel \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user for security purposes
@@ -36,7 +37,10 @@ ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
 
 RUN chown -R "${DOCKER_APP_USER}:${DOCKER_APP_USER}" /app
 USER ${DOCKER_APP_USER}
-
+RUN true \
+    && python3 -m pip install --no-cache-dir --upgrade pip \
+    && python3 -m pip install --no-cache-dir --upgrade setuptools \
+    && python3 -m pip install --no-cache-dir --upgrade wheel
 
 ### Project-Specific Dockerfile Steps ###
 WORKDIR /app
