@@ -1,0 +1,2 @@
+# has own prettier, which is also run as part of .github/workflows/ci.yml
+{{ cookiecutter.project_slug }}

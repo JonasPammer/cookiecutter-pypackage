@@ -222,7 +222,6 @@ jobs:
         run: .tox/pip${{ matrix.pip-version }}/${{ matrix.os == 'Windows' && 'Scripts' || 'bin' }}/coverage xml -o coverage.xml
         working-directory: ./some-package
 
-
       ## TEST SETUPTOOLS BUILD ##
       # as per .github/workflows/release-to-pypi.yml
       - name: install build dependencies of generated project
