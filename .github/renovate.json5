@@ -30,8 +30,8 @@
   labels: ["kind/dependencies"],
   packageRules: [
     {
-      matchPackagePatterns: ["eslint"],
       labels: ["kind/dependencies", "priority/low"],
+      matchPackageNames: ["/eslint/"],
     },
     {
       matchDepTypes: ["action"],
