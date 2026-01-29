@@ -12,6 +12,7 @@ Understanding this dual structure is critical:
 2. **Generated Project Level** (`{{ cookiecutter.project_slug }}/`): The actual Python package template that gets generated
 
 Most files exist in both levels with similar purposes but different scopes. For example:
+
 - `.github/workflows/ci.yml` (root) tests the template generation process
 - `{{ cookiecutter.project_slug }}/.github/workflows/ci.yml` is the CI that will be used by generated projects
 
@@ -103,6 +104,7 @@ import argparse
 ```
 
 Key conditional blocks to understand:
+
 - CLI framework selection (Click vs Argparse vs None)
 - Test framework (pytest vs unittest)
 - License classifier mappings in `setup.cfg`
@@ -116,11 +118,13 @@ py{37,38,39,310,311,py3}-pip{previous,latest,main}
 ```
 
 This generates combinations like:
-- `py37-pipprevious`: Python 3.7 with pip 21.3.*
+
+- `py37-pipprevious`: Python 3.7 with pip 21.3.\*
 - `py310-piplatest`: Python 3.10 with latest pip
 - `py311-pipmain`: Python 3.11 with pip from main branch
 
 The CI matrix (`{{ cookiecutter.project_slug }}/.github/workflows/ci.yml`) tests:
+
 - 3 OS: Ubuntu, Windows, macOS
 - 4 Python versions: 3.7, 3.8, 3.9, 3.10
 - 2 pip versions: latest, previous
@@ -150,6 +154,7 @@ The CI matrix (`{{ cookiecutter.project_slug }}/.github/workflows/ci.yml`) tests
 ### Root Level (`./github/workflows/ci.yml`)
 
 Tests the template generation process:
+
 1. Generates example project from cookiecutter
 2. Runs pip-compile in generated project
 3. Installs dependencies and runs pre-commit
@@ -163,15 +168,18 @@ Tests the template generation process:
 **ci.yml**: Multi-OS testing, coverage reporting, package build verification
 
 **docker.yml**: Build, scan with Trivy, push to DockerHub on tags
+
 - Tags: `1.2.3`, `1.2`, `latest` for release tags
 - Branch tags: `master`, `pr-123`, etc.
 - Requires `DOCKERHUB_TOKEN` and `DOCKERHUB_PASSWORD` secrets
 
 **release-to-pypi.yml**: Auto-publish to PyPI on `v*` tags
+
 - Requires `PYPI_API_KEY` secret
 - Triggered by tags like `v1.0.0`
 
 **gh-pages.yml**: Documentation generation
+
 - Converts `README.orig.adoc` → `README.adoc` (asciidoctor-reducer)
 - Converts to `README.md` (pandoc)
 - Publishes to GitHub Pages
@@ -189,6 +197,7 @@ Dependencies are managed with pip-tools in generated projects:
 3. Install from `.txt` files with `--require-hashes`
 
 **Files:**
+
 - `setup.cfg`: Runtime dependencies (install_requires)
 - `requirements.in`: Derived from setup.cfg (empty by default)
 - `requirements.txt`: Runtime deps with hashes
@@ -206,12 +215,14 @@ Hash verification provides supply chain security but requires use of `.txt` file
 Generated projects include extensive pre-commit configuration:
 
 **General:**
+
 - commitlint: Conventional commits enforcement
 - detect-secrets: Secret scanning
 - prettier: Multi-format formatting (YAML, JSON, MD)
 - yamllint: YAML validation
 
 **Python:**
+
 - black: Code formatting (88 char line length)
 - reorder-python-imports: Import sorting with `from __future__ import annotations`
 - pyupgrade: Syntax upgrades for Python 3.7+
@@ -221,6 +232,7 @@ Generated projects include extensive pre-commit configuration:
 - setup-cfg-fmt: setup.cfg formatting
 
 **Installation:** Optional for contributors (pre-commit.ci handles it), but recommended:
+
 ```bash
 pre-commit install
 pre-commit run --all-files  # Run manually anytime
@@ -231,6 +243,7 @@ pre-commit run --all-files  # Run manually anytime
 ### Best-Practice Dockerfile
 
 Generated projects include production-ready Dockerfiles:
+
 - Base: `python:3.11-slim-bullseye`
 - Non-root user: `secureappuser`
 - Virtual environment in `/app/venv`
@@ -241,6 +254,7 @@ Generated projects include production-ready Dockerfiles:
 ### docker_smoke_test.py
 
 Dependency-free Python3 script that:
+
 1. Builds Docker image: `docker build -t test-image .`
 2. Runs detached container: `docker run -d test-image`
 3. Validates exit code
@@ -262,6 +276,7 @@ Generated projects use AsciiDoc with a special workflow:
 This solves GitHub's lack of support for AsciiDoc includes (github/markup#1095).
 
 **Included files:**
+
 - `SECURITY.adoc`: Security policy
 - `DEVELOPMENT.adoc`: Developer docs
 - `CONTRIBUTING.adoc`: Contribution guidelines
@@ -276,6 +291,7 @@ Edit `README.orig.adoc`, never `README.adoc` or `README.md` (both auto-generated
 **For maintainers:** Required (enables automatic versioning)
 
 Format: `type(scope): description`
+
 - Types: feat, fix, docs, style, refactor, test, chore
 - Example: `chore: Bump version 0.1.0 → 0.2.0`
 
@@ -298,10 +314,12 @@ Generated projects require manual GitHub setup:
 ### Secrets
 
 **For Docker workflow:**
+
 - `DOCKERHUB_TOKEN`
 - `DOCKERHUB_PASSWORD`
 
 **For PyPI workflow:**
+
 - `PYPI_API_KEY`
 
 ### Renovate Setup
@@ -309,6 +327,7 @@ Generated projects require manual GitHub setup:
 Install the [Renovate GitHub App](https://github.com/marketplace/renovate) to enable automated dependency updates.
 
 Configuration in `.github/renovate.json5`:
+
 - Monthly schedule
 - PR limits (2 hourly, 10 concurrent)
 - 7-day minimum release age
@@ -318,6 +337,7 @@ Configuration in `.github/renovate.json5`:
 ### GitHub Pages
 
 To enable the generated README on GitHub Pages:
+
 1. Go to repository Settings → Pages
 2. Under Source, select: `gh-pages` branch, `/ (root)` directory
 3. Click Save
@@ -342,6 +362,7 @@ git push origin v1.0.0
 ```
 
 **Version tag triggers:**
+
 - `release-to-pypi.yml`: Builds wheels, uploads to PyPI
 - `docker.yml`: Builds multi-arch image, pushes to DockerHub with semantic tags
 
@@ -350,6 +371,7 @@ git push origin v1.0.0
 ## Development Workflow for Generated Projects
 
 1. **Setup:**
+
    ```bash
    python3 -m venv venv && source venv/bin/activate
    pip install -r requirements-dev.txt
@@ -361,11 +383,13 @@ git push origin v1.0.0
    ```
 
 2. **Code changes:**
+
    - Edit source code in `{{ cookiecutter.pkg_name }}/`
    - Add tests in `tests/`
    - Pre-commit runs automatically on commit (if installed)
 
 3. **Testing:**
+
    ```bash
    tox -e py3              # Quick local test
    tox -e pre-commit       # All linting/formatting
@@ -373,6 +397,7 @@ git push origin v1.0.0
    ```
 
 4. **Dependency changes:**
+
    - Edit `setup.cfg` for runtime deps
    - Edit `requirements-*.in` for dev/build deps
    - Run appropriate `pip-compile` commands
@@ -417,12 +442,14 @@ When adding conditional features, use Jinja2 conditionals and update `cookiecutt
 ## License Options
 
 Template supports 8 open source licenses via choosealicense.com:
+
 - MIT License, The Unlicense, Boost Software License 1.0
 - Apache License 2.0, Mozilla Public License 2.0
 - GNU LGPLv3, GNU GPLv3, GNU AGPLv3
 - "Not open source"
 
 License selection affects:
+
 - `LICENSE` file content
 - `setup.cfg` classifiers and metadata
 - README badges and sections
