@@ -30,7 +30,7 @@ jobs:
     steps:
       ### GENERIC COOKIECUTTER INITIALIZATION STEPS ###
       - name: check out the codebase
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
       - name: set up python 3
         uses: actions/setup-python@57ded4d7d5e986d7296eab16560982c6dd7c923b # v4
@@ -162,7 +162,7 @@ jobs:
     steps:
       ### INITIALIZATION ###
       - name: check out the codebase
-        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
       - name: set up python ${{ matrix.python-version }} using github's action
         uses: actions/setup-python@57ded4d7d5e986d7296eab16560982c6dd7c923b # v4
